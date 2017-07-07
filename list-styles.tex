@@ -1,0 +1,247 @@
+\newtcolorbox[%
+%\newtcblisting[%
+    auto counter,
+    number within=chapter,
+    list inside=javaformat,
+]{javaformat}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    colframe=nccblue,
+    sharp corners=downhill,
+    colbacktitle=nccorange,
+    fonttitle=\sffamily\bfseries\large,
+    title=Code Format: #1,
+    fontupper=\ttfamily,
+    coltext=nccblue,
+    colback=white,
+    %center title,
+    after title={\hfill{\small (Format \thetcbcounter)}},
+    % listing only,
+    % listing options={%
+    %   listing engine=minted,
+    %   minted language=java,
+    %   %minted style=colorful,
+    %   minted options={frame=lines,linenos=true,numbers=right,numbersep=1mm},
+    %   %left=5mm,
+    %   enhanced,
+    % }
+    % overlay={%
+    %     \begin{tcbclipinterior}\fill[red!20!blue!20!white]
+    %     (frame.south west)
+    %     rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}
+    % }
+}
+
+\newtcolorbox[%
+    % auto counter,
+    % number within=chapter,
+    % list inside=javaformat
+]{javaformat*}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    colframe=nccblue,
+    sharp corners=downhill,
+    colbacktitle=nccorange,
+    fonttitle=\sffamily\bfseries\large,
+    title=Code Format: #1,
+    fontupper=\ttfamily,
+    coltext=nccblue,
+    colback=white,
+    %center title,
+    % after title={\hfill{\small (Format \thetcbcounter)}},
+    listing only,
+}
+
+\newtcolorbox[%
+    auto counter,
+    number within=chapter,
+    list inside=defn
+]{defn}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    sharp corners=downhill,
+    title=Definition: #1,
+    colframe=nccblue,
+    fonttitle=\sffamily\bfseries\large,
+    fontupper=\sffamily,
+    coltitle=white,
+    coltext=white,
+    colback=nccorange,
+    after title={\hfill{\small (Definition \thetcbcounter)}}
+}
+
+\newtcolorbox[]{defn*}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    sharp corners=downhill,
+    title=Definition: #1,
+    colframe=nccblue,
+    fonttitle=\sffamily\bfseries\large,
+    fontupper=\sffamily,
+    coltitle=white,
+    coltext=white,
+    colback=nccorange
+}
+
+\newtcolorbox[%
+    auto counter,
+    number within=chapter,
+    list inside=trap,
+]{trap}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    colframe=nccblue,
+    sharp corners=uphill,
+    colbacktitle=nccred,
+    coltitle=white,
+    fonttitle=\sffamily\bfseries\large,
+    title=The #1 Trap,
+    fontupper=\ttfamily,
+    coltext=nccred,
+    colback=white,
+    %center title,
+    after title={\hfill{\small (Trap \thetcbcounter)}},
+}
+
+\newtcolorbox[%
+    % auto counter,
+    % number within=chapter,
+    % list inside=javaformat
+]{trap*}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    colframe=nccblue,
+    sharp corners=uphill,
+    colbacktitle=white,
+    coltitle=nccred,
+    fonttitle=\sffamily\bfseries\large,
+    title=The #1 Trap,
+    fontupper=\ttfamily,
+    coltext=white,
+    colback=nccred
+    %center title,
+    % after title={\hfill{\small (Format \thetcbcounter)}},
+}
+
+\newtcolorbox[%
+    auto counter,
+    number within=chapter,
+    list inside=magic,
+]{magic}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    colframe=nccblue,
+    sharp corners=downhill,
+    colbacktitle=nccpurple,
+    coltitle=white,
+    fonttitle=\sffamily\bfseries\large,
+    title=Magic Code: #1,
+    fontupper=\sffamily,
+    coltext=black,
+    colback=nccviolet!10!white,
+    %center title,
+    after title={\hfill{\small (Magic Code \thetcbcounter)}},
+}
+
+\newtcolorbox[%
+    % auto counter,
+    % number within=chapter,
+    % list inside=magic,
+]{magic*}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    colframe=nccblue,
+    sharp corners=downhill,
+    colbacktitle=nccviolet,
+    coltitle=white,
+    fonttitle=\sffamily\bfseries\large,
+    title=Magic Code: #1,
+    fontupper=\sffamily,
+    coltext=white,
+    colback=nccpurple,
+    %center title,
+    %after title={\hfill{\small (Magic Code \thetcbcounter)}},
+}
+
+\newtcolorbox[%
+    auto counter,
+    number within=chapter,
+    list inside=tip
+]{tip}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    sharp corners=downhill,
+    title=Tip: #1,
+    colframe=nccgreen,
+    fonttitle=\sffamily\bfseries\large,
+    fontupper=\sffamily,
+    coltitle=white,
+    coltext=nccgreen,
+    colback=white,
+    after title={\hfill{\small (Tip \thetcbcounter)}}
+}
+
+\newtcolorbox[]{tip*}[1]{%
+    width=\textwidth,
+    boxsep=0.25em,
+    left=0.75em,
+    right=0.75em,
+    sharp corners=downhill,
+    title=Tip: #1,
+    colframe=nccgreen,
+    fonttitle=\sffamily\bfseries\large,
+    fontupper=\sffamily,
+    coltitle=white,
+    coltext=nccgreen,
+    colback=white
+}
+
+\newcommand{\programoutput}[2]{%
+    \begin{tcolorbox}[width=\textwidth,
+                      %drop shadow,
+                      boxsep=0.25em,
+                      left=0.75em,
+                      right=0.75em,
+                      colframe=nccblue,
+                      sharp corners=downhill,
+                      coltitle=nccblue,
+                      colbacktitle=white,
+                      fonttitle=\sffamily\bfseries\large,
+                      title=Output from Code Listing #1,
+                      fontupper=\ttfamily,
+                      coltext=white,
+                      colback=nccblue,
+                      center title,
+                     ]
+    #2
+    \end{tcolorbox}
+}
+
+% \newtcolorbox[
+%     %blend into=tables
+% ]{ttable}[3]{
+%     float,
+%     floatplacement=ht,
+%     capture=hbox,
+%     title=#1,
+%     every float=\centering,
+%     #2
+% }

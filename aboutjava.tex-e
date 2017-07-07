@@ -1,0 +1,292 @@
+% !TEX root = /Users/cmerlo//cs1textbook/cs1textbook.tex
+
+\chapter{About Java}
+
+\minitoc
+
+What is Java?  How is it different from other programming languages?  What should a beginning programmer know about it?  The answers to these questions, and more, follow.  Read on!
+
+\section{A Brief History of Programming}
+
+\textit{\textbf{Please note:} This should in no way be considered a complete, or even acceptable, history of programming.  This section serves merely to illustrate the motivation that programmers had to create languages like Java.}
+
+\subsection{Machine Language}
+
+Every CPU has an \textit{instruction set}, which is just a list of numeric instructions that it understands.  These instructions are fairly basic -- things like ``store this number in register \#1'' or ``add this value to the number that's in register \#1'' or ``see if the number in register \#1 is greater than zero''.  This set of numeric instructions is what is generally referred to as \textit{machine language}.
+
+A typical machine language program might look like:
+
+\begin{minipage}{\textwidth}
+\begin{verbatim}
+    00A5    06  000000F3
+    00B2    15  FFFFFFE7
+    006C    D5  000D3180
+    <etc...>
+\end{verbatim}
+\end{minipage}
+
+As you can see, the language that's understood by CPUs is frequently completely unreadable by humans.  Even if you know what CPU's language the code above is written in,\footnote{That code isn't in \textit{any} language; I just made it up.} trying to determine what it does, or see where there's a bug, could be quite a chore.
+
+\subsection{Assembly Language}
+
+Programmers invented \textbf{assembly language}\index{Assembly Language} to make machine language more readable.  Each numeric CPU instruction was given a \textit{mnemonic} like \verb-ADD- or \verb-MOV-, so that instructions could be written in a more human-readable way.  The previous machine-language program might look like this in assembly\footnote{Again, completely made up.}:
+
+\begin{minipage}{\textwidth}
+\begin{verbatim}
+    MOV     REG1,F3
+    ADD     REG1,15
+    CMP     REG1,0
+    <etc...>
+\end{verbatim}
+\end{minipage}
+
+Of course, the CPU doesn't understand assembly language, and so programmers had to write a conversion program called an \textit{assembler}, that turns assembly language into machine language.
+
+\subsection{Portability and the Rise of High-Level Languages}
+
+Even so, since one CPU's machine language frequently bears little to no resemblance to that of another CPU, an attempt to run machine-language code or assembly code on another computer often resulted in complete failure.  However, managers kept buying new hardware, and expected their programmers' programs to run on it.
+
+Programmers try to avoid repeating work, and so they hoped for a system where the same source code could be reused on different hardware platforms.  This necessitated adding a \textit{layer of abstraction} to their coding paradigm -- a language that's ``farther away'' from the hardware than assembly language is.
+
+\begin{defn}{Abstraction Layer}
+    In software, an \textbf{abstraction layer} is a way of avoiding talking about the details of how a system is implemented.  We can say, for instance, ``The N16 bus goes from here to school'' without having to dwell on the details of which roads it takes, or who drives it, or what kind of fuel it uses; the bus route is a layer above those details, and it saves us time in conversation.  If the route is implemented with a different model of bus, or with digital currency instead of cash, the N16 is still the route that travels from here to school.
+\end{defn}
+
+Such languages have been grouped together as \textit{high-level languages}\index{High-level Language}.  Such code is not merely assembled for the hardware on the local system, since it is designed to run on multiple systems; instead, the language also provides programs to turn the source code into machine languages on several different systems.  These programs are generally called \textit{compilers} or \textit{interpreters}, based on how they work.
+
+\begin{defn}{High-Level Language}
+    A \textbf{high-level programming language} is a language that ignores the implementation details of any computer platform on which a program might run.
+\end{defn}
+
+This property of high-level language code -- that it is equally useful on multiple computer platforms -- is called \textit{portability}, since it makes it possible for the source code to be \textit{ported} from one platform to another.
+
+\begin{defn}{Portability}
+    \textbf{Portability}\index{Portability} is a property of source code that allows it to be useful on more than one platform.  Programmers use the verb \textit{port} to describe moving source code from one platform to another.  Ported code must generally be recompiled for the new platform.
+\end{defn}
+
+Since the code of a high-level language doesn't have to resemble machine code, programmers have been free to design these languages in ways that make the code more human-readable.  Continuing our contrived example from before, high-level languages support writing code like this:
+
+\begin{verbatim}
+    if( reg1 + 15 > 0 )
+\end{verbatim}
+
+\subsection{How Source Code Becomes a Program}
+
+Figure \ref{fig:become-program} illustrates the path that source code has to take to become a program in these different paradigms.  Note that high-level code doesn't have to be rewritten when it's copied to a new platform, but it does have to be recompiled on the new platform.
+
+\newcommand{\rulesep}{\unskip\ \vrule\ }
+\def\raisetext#1{\raisebox{2.5ex}}
+\tikzstyle{code}=[draw=nccblue,fill=nccorange,text=white]
+\tikzstyle{program}=[draw=nccorange,fill=nccblue,text=white,ellipse]
+\tikzstyle{hw}=[draw=black,fill=coolgray4,text=nccred]
+\begin{figure}[ht]
+    \captionsetup[subfigure]{justification=centering}
+    \begin{subfigure}[c]{\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \node (source1) [code] {Machine Language Code};
+                \node (hw1) [hw,below of = source1] {Runs on Hardware};
+
+                \draw [->] (source1) -- (hw1);
+
+                \node[draw=nccblue,
+                      dashed,
+                      thick,
+                      label={[label distance=1mm,text=nccblue]115:Platform 1},
+                      fit=(source1) (hw1)
+                ] {};
+
+                \node (source2) [code,right = 2cm of source1] {Machine Language Code};
+                \node (hw2) [hw,below of = source2] {Runs on Hardware};
+
+                \draw [->] (source2) -- (hw2);
+
+                \node[draw=nccgreen,
+                      dashed,
+                      thick,
+                      label={[label distance=1mm,text=nccgreen]65:Platform 2},
+                      fit=(source2) (hw2)
+                ] {};
+
+                \draw [thick,nccorange,->,out=45,in=135,shorten > = 3mm, shorten < = 3mm] (source1) to node [above] {Rewrite} (source2);
+
+            \end{tikzpicture}
+        \end{center}
+        \caption{Machine Language}
+    \end{subfigure}
+
+    \begin{subfigure}[c]{\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \node (source1) [code] {Assembly Code};
+                \node (assembler1) [program,below of = source1] {Assembler};
+                \node (m1) [code,below of = assembler1] {Machine Language Code};
+                \node (hw1) [hw,below of = m1] {Runs on Hardware};
+
+                \draw [->] (source1) -- (assembler1);
+                \draw [->] (assembler1) -- (m1);
+                \draw [->] (m1) -- (hw1);
+
+                \node[draw=nccblue,
+                      dashed,
+                      thick,
+                      label={[label distance=1mm,text=nccblue]115:Platform 1},
+                      fit=(source1) (assembler1) (m1) (hw1)
+                ] {};
+
+
+                \node (source2) [code,right = 3cm of source1] {Assembly Code};
+                \node (assembler2) [program,below of = source2] {Assembler};
+                \node (m2) [code,below of = assembler2] {Machine Language Code};
+                \node (hw2) [hw,below of = m2] {Runs on Hardware};
+
+                \draw [->] (source2) -- (assembler2);
+                \draw [->] (assembler2) -- (m2);
+                \draw [->] (m2) -- (hw2);
+
+
+                \node[draw=nccgreen,
+                      dashed,
+                      thick,
+                      label={[label distance=1mm,text=nccgreen]75:Platform 2},
+                      fit=(source2) (assembler2) (m2) (hw2)
+                ] {};
+
+                \draw [thick,nccorange,->,out=45,in=135,shorten > = 3mm, shorten < = 3mm] (source1) to node [above] {Rewrite} (source2);
+
+            \end{tikzpicture}
+        \end{center}
+    \caption{Assembly Language}
+    \end{subfigure}
+
+    \begin{subfigure}[c]{\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \node (source) [code] {High-Level Source Code};
+                \node (compiler1) [program,below = 4mm of source] {Compiler};
+                \node (o1) [code,below of = compiler1] {Object Code};
+                \node (hw1) [hw,below of = o1] {Runs on Hardware};
+
+                \node (source2) [code,right = 25mm of source] {Copy of Source Code};
+                \node (compiler2) [program,right = 39 mm of compiler1] {Compiler};
+                \node (o2) [code,below of = compiler2] {Object Code};
+                \node (hw2) [hw,below of = o2] {Runs on Hardware};
+
+                \node[draw=nccblue,
+                      dashed,
+                      thick,
+                      label={[label distance=1mm,text=nccblue]115:Platform 1},
+                      fit=(source) (compiler1) (o1) (hw1)
+                ] {};
+
+                \draw [->] (source) -- (compiler1);
+                \draw [->] (compiler1) -- (o1);
+                \draw [->] (o1) -- (hw1);
+
+                \draw [->] (source2) -- (compiler2);
+                \draw [->] (compiler2) -- (o2);
+                \draw [->] (o2) -- (hw2);
+
+                \node[draw=nccgreen,
+                      dashed,
+                      thick,
+                      label={[label distance=1mm,text=nccgreen]75:Platform 2},
+                      fit=(source2) (compiler2) (o2) (hw2)
+                ] {};
+
+                \draw [thick,nccorange,->,out=45,in=135,shorten > = 3mm, shorten < = 3mm] (source) to node [above] {Copy} (source2);
+
+                \draw [thick,nccblue,->,out=15,in=165,shorten > = 2mm, shorten < = 2mm] (compiler1) to node [above] {Recompile} (compiler2);
+
+
+            \end{tikzpicture}
+        \end{center}
+    \caption{High-Level Language}
+    \label{fig:high-level}
+    \end{subfigure}
+    \caption{How Source Code Becomes a Program on Different Platforms}
+    \label{fig:become-program}
+\end{figure}
+
+\subsection{Architecture Neutrality}
+
+To say that Java is portable like any other high-level language ignores an important detail.  Java was developed around the time that people started to believe that the Internet would be important to the general public.  Java was developed at a company called Sun Microsystems, which at the time was primarily invested in Unix systems.  The developers knew that their intended audience for Java programs would be primarily non-technical users, on disparate platforms, with neither the desire nor the skills to compile software.
+
+The developers, under the direction of James Gosling, created the \textit{Java Virtual Machine} (JVM) -- plans for a computer that would never exist.  While the object code you see in Figure \ref{fig:high-level} is native machine code for the platform on which the source was compiled, the Java compiler was written to target this imaginary JVM, creating \textit{bytecode} for it.  Java then shipped \textit{interpreters} that all read the same bytecode specification and tailor their interpretation of it to the hardware on which the interpreter is running.  This allows Java programmers to write their code on the platform of their choice, confident in the knowledge that their audience will be able to run the program on their platform of choice.  See Figure \ref{fig:java-compilation}.
+
+\begin{figure}[ht]
+    \begin{center}
+        \begin{tikzpicture}
+            \node (source) [code] {Java Source Code};
+            \node (compiler1) [program,below = 4mm of source] {Java Compiler};
+            \node (o1) [code,below of = compiler1] {Bytecode};
+            \node (i1) [program,below of = o1] {Java Interpreter};
+            \node (hw1) [hw,below of = i1] {Runs on Hardware};
+
+            \node[draw=nccblue,
+                  dashed,
+                  thick,
+                  label={[label distance=1mm,text=nccblue]90:Platform 1},
+                  fit=(source) (compiler1) (o1) (i1) (hw1)
+            ] {};
+
+            \node (blank) [right = 6cm of source] {};
+
+            \node (o2) [code,right = 6cm of o1)] {Bytecode};
+            \node (i2) [program,below of = o2] {Java Interpreter};
+            \node (hw2) [hw,below of = i2] {Runs on Hardware};
+
+            \node[draw=nccgreen,
+                  dashed,
+                  thick,
+                  label={[label distance=1mm,text=nccgreen]90:Platform 2},
+                  fit=(blank) (o2) (i2) (hw2)
+            ] {};
+
+            \draw [->] (source) -- (compiler1);
+            \draw [->] (compiler1) -- (o1);
+            \draw [->] (o1) -- (i1);
+            \draw [->] (i1) -- (hw1);
+
+            \draw [->] (o2) -- (i2);
+            \draw [->] (i2) -- (hw2);
+
+            \draw [thick,nccorange,->,out=15,in=165,shorten > = 3mm, shorten < = 3mm] (o1) to node [above] {Copy} (o2);
+
+        \end{tikzpicture}
+    \end{center}
+    \caption{How Java Source Code Becomes a Program on Different Platforms}
+    \label{fig:java-compilation}
+\end{figure}
+
+\section{Features of Object-Oriented Programming Languages}
+
+It's good to know that Java is portable and architecture-neutral, but to really understand Java, one must understand that it is an \textbf{object-oriented programming language}\index{Object-oriented}.  The following features of object-oriented programming languages make Java a good choice for many programming challenges.
+
+\subsection{Extensibility}
+
+Because Java is an object-oriented language, we can \textit{extend} the language by creating our own data types.  We will discuss how to do this in Chapter $X$.
+
+\subsection{Inheritance}
+
+This is one of the most beneficial features of object-oriented programming languages.  We have the opportunity to define a new data type based upon the properties and behaviors of existing data types.  This allows us to add a little bit of functionality to Java by writing a little bit of code.  We will explore inheritance fully in Chapter $X$.
+
+\subsection{Code Reuse}
+
+One of the nicest features of object orientation is how easy it is for us to write generic software tools that we can adapt to new projects very easily.
+
+\subsection{Information Hiding}
+
+How, exactly, does your car's engine work?  What pressure is the fuel under as it gets pumped from the tank to the cylinders?  Fortunately, we don't need to know these things while we're driving.  We can similarly shield certain parts of our program from knowing details about other parts of it, in the interest of simplicity or security.  These ideas are explored in Chapter $X$.
+
+\section{Other Features of Java}
+
+While Java's architecture neutrality and its object-oriented nature alone make Java a compelling choice for a programming language, there are other beneficial features as well.
+
+\subsection{Multithreading}
+
+Java programs can be written in such a way that, where supported by the right hardware, different threads of instructions can be executed at the same time, in parallel execution paths.  For instance, a program can download a multimedia file, display the video, play the audio, and update its interface, all at the same time, helping to reduce the amount of buffering that causes the video to pause while more of it gets downloaded.
+
+\subsection{Memory Management}
+
+While not everyone agrees that Java's memory management model is great, it has its benefits.  In a language like C, the programmer must keep track of memory that has been dynamically allocated, and be sure to give it back to the operating system.  Java, however, automates memory allocation so that the prorgrammer largely doesn't have to know how much is being used.  Also, Java employs \textit{automatic garbage collection}, which allows programmers to not know or care how memory gets returned once it's no longer needed.

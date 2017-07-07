@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{12}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{6}\PYG{o}{;}
+
+\PYG{k}{if}\PYG{o}{(} \PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{n}{y} \PYG{o}{)}
+    \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{o}{;}
+\PYG{k}{if}\PYG{o}{(} \PYG{n}{x} \PYG{o}{\PYGZgt{}} \PYG{n}{y} \PYG{o}{)}
+    \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{15}\PYG{o}{;}
+\end{Verbatim}

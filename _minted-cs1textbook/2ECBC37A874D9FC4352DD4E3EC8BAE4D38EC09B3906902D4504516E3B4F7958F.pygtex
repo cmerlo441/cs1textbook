@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Arithmetic} \PYG{o}{\PYGZob{}}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{o}{(} \PYG{n}{String} \PYG{n}{args}\PYG{o}{[]} \PYG{o}{)} \PYG{o}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{i1}\PYG{o}{;}
+        \PYG{k+kt}{int} \PYG{n}{i2}\PYG{o}{;}
+        \PYG{k+kt}{double} \PYG{n}{d1}\PYG{o}{;}
+
+        \PYG{n}{i1} \PYG{o}{=} \PYG{l+m+mi}{6}\PYG{o}{;}
+        \PYG{n}{i2} \PYG{o}{=} \PYG{n}{i1} \PYG{o}{*} \PYG{l+m+mi}{3}\PYG{o}{;}  \PYG{c+c1}{// i2 = 18}
+        \PYG{n}{i2} \PYG{o}{=} \PYG{n}{i1} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{7}\PYG{o}{;}  \PYG{c+c1}{// The 18 is replaced by \PYGZhy{}1}
+
+        \PYG{n}{d1} \PYG{o}{=} \PYG{n}{i1} \PYG{o}{/} \PYG{l+m+mi}{4}\PYG{o}{;}  \PYG{c+c1}{// What is stored in d1?}
+    \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

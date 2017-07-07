@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Point} \PYG{n}{p1} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Point}\PYG{o}{();}
+\end{Verbatim}

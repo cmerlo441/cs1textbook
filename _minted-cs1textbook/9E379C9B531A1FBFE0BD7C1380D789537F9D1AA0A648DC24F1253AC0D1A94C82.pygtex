@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k}{if}\PYG{o}{(} \PYG{o}{\PYGZlt{}}\PYG{k+kt}{boolean}\PYG{o}{\PYGZhy{}}\PYG{n}{expression}\PYG{o}{\PYGZgt{}} \PYG{o}{)}
+    \PYG{o}{\PYGZlt{}}\PYG{n}{statement}\PYG{esc}{$_\mathrm{T}$}\PYG{o}{\PYGZgt{}}
+\PYG{k}{else}
+    \PYG{o}{\PYGZlt{}}\PYG{n}{statement}\PYG{esc}{$_\mathrm{F}$}\PYG{o}{\PYGZgt{}}
+\end{Verbatim}

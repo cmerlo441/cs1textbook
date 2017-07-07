@@ -1,0 +1,53 @@
+% !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
+
+\chapter{ASCII}
+\label{appendix:ascii}
+
+\minitoc
+
+\textbf{ASCII}\index{ASCII}, the American Standard Code for Information Interchange, is a table that relates \textit{characters}, which were discussed in Section \ref{section:characters}, with numbers.  It was devised in the 1960s by the organization now called ANSI, the American National Standards Institute.  By assigning a numeric code to each character that a computer might represent, it became possible for sequences of these characters to be transmitted from one computer to another.  Data are sent across networks in numeric form.
+
+In this chart, the high byte is listed in the first column, and the low byte is listed in the first row.  To determine the ASCII value of the character `E', for instance, look left to its high byte 4, and then up to its low byte 5, to find the hexadecimal value 45, equivalent to decimal 69.
+
+Note that ASCII is technically a seven-bit encoding scheme, and so officially there are no ASCII values higher than 7F$_{16}$, or $127_{10}$.  However, since PCs use eight bits to store a character, several operating systems define their own encodings for ASCII values between 80$_{16}$ ($128_{10}$) and FF$_{16}$ ($255_{10}$).
+
+%\begin{landscape}
+\begin{center}
+\footnotesize
+\bgroup
+%\def\arraystretch{1.5}
+\begin{tabular}{r | *{16}{c}}
+ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & A & B & C & D & E & F\\
+\hline\\
+0 & NUL & SOH & STX & ETX & EOT & ENQ & ACK & BEL & BS & HT & LF & VT & FF & CR & SO & SI\\
+
+1 & DLE & DC1 & DC2 & DC3 & DC4 & NAK & SYN & ETB & CAN & EM & SUB & ESC & FS & GS & RS & US\\
+
+2 & Space & ! & \verb-"- & \verb-#- & \verb-$- & \verb-%- & \verb-&- & \verb-'- & \verb-(- & \verb-)- & \verb-*- & \verb-+- & \verb-,- & \verb|-| & \verb-.- & \verb-/-\\
+
+3 & \verb-0- & \verb-1- & \verb-2- & \verb-3- & \verb-4- & \verb-5- & \verb-6- & \verb-7- & \verb-8- & \verb-9- & \verb|:| & \verb|;| & \verb|<| & \verb|=| & \verb->- & \verb-?-\\
+
+4 & \verb-@- & \verb-A- & \verb-B- & \verb-C- & \verb-D- & \verb-E- & \verb-F- & \verb-G- & \verb-H- & \verb-I- & \verb-J- & \verb-K- & \verb-L- & \verb-M- & \verb-N- & \verb-O-\\
+
+5 & \verb-P- & \verb-Q- & \verb-R- & \verb-S- & \verb-T- & \verb-U- & \verb-V- & \verb-W- & \verb-X- & \verb-Y- & \verb-Z- & \verb-[- & \verb-\- & \verb-]- & \verb-^- & \verb-_-\\
+
+6 & \verb-`- & \verb-a- & \verb-b- & \verb-c- & \verb-d- & \verb-e- & \verb-f- & \verb-g- & \verb-h- & \verb-i- & \verb-j- & \verb-k- & \verb-l- & \verb-m- & \verb-n- & \verb-o-\\
+
+7 & \verb-p- & \verb-q- & \verb-r- & \verb-s- & \verb-t- & \verb-u- & \verb-v- & \verb-w- & \verb-x- & \verb-y- & \verb-z- & \verb-{- & \verb-|- & \verb-}- & \verb-~- & DEL\\
+\end{tabular}
+\egroup
+\end{center}
+%\end{landscape}
+
+% \hline
+% 10000 & 16  & 0010 & DLE & Data link escape\\
+% 10001 & 17  & 0011 & DC1 & Device control 1\\
+% 10010 & 18  & 0012 & DC1 & Device control 2\\
+% 10011 & 19  & 0013 & DC1 & Device control 3\\
+% 10100 & 20  & 0014 & DC1 & Device control 4\\
+% 10101 & 21  & 0015 & NAK & Negative acknowledgment\\
+% 10110 & 22  & 0016 & SYN & Synchronous Idle\\
+% 10111 & 23  & 0017 & ETB & End of transmission block\\
+%
+% \hline
+% \end{tabular}

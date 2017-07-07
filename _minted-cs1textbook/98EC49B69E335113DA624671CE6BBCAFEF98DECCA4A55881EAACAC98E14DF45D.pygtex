@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{numberOfGuests} \PYG{o}{=} \PYG{l+m+mi}{15}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{guestsPerTable} \PYG{o}{=} \PYG{l+m+mi}{4}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{numberOfTables} \PYG{o}{=} \PYG{o}{(} \PYG{n}{numberOfGuests} \PYG{o}{/} \PYG{n}{guestsPerTable} \PYG{o}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{;}
+\end{Verbatim}

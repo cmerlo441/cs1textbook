@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{boolean} \PYG{n}{b1} \PYG{o}{=} \PYG{k+kc}{true}\PYG{o}{;}
+\PYG{k+kt}{boolean} \PYG{n}{b2} \PYG{o}{=} \PYG{k+kc}{false}\PYG{o}{;}
+\end{Verbatim}

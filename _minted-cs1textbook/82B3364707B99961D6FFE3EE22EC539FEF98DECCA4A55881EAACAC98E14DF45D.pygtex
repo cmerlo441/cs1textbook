@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{String} \PYG{n}{s1} \PYG{o}{=} \PYG{k}{new} \PYG{n}{String}\PYG{o}{(} \PYG{l+s}{\PYGZdq{}abcdef\PYGZdq{}} \PYG{o}{);}
+\PYG{n}{String} \PYG{n}{s2} \PYG{o}{=} \PYG{k}{new} \PYG{n}{String}\PYG{o}{(} \PYG{l+s}{\PYGZdq{}ghij\PYGZdq{}} \PYG{o}{);}
+\PYG{k+kt}{int} \PYG{n}{count1}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{count2}\PYG{o}{;}
+
+\PYG{n}{count1} \PYG{o}{=} \PYG{n}{s1}\PYG{o}{.}\PYG{n+na}{length}\PYG{o}{();}  \PYG{c+c1}{// count1 stores 6}
+\PYG{n}{count2} \PYG{o}{=} \PYG{n}{s2}\PYG{o}{.}\PYG{n+na}{length}\PYG{o}{();}  \PYG{c+c1}{// count2 stores 4}
+\end{Verbatim}

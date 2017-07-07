@@ -1,0 +1,54 @@
+% !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
+
+\chapter{A Very Brief Introduction to Output}
+
+\minitoc
+
+\section{Packages}
+
+The Java language is composed of many components called \textit{classes} (of which there will be a much fuller discussion later), and these classes are gathered in packages for easy categorization.
+
+\index{Package}
+\begin{defn}{Package}
+A \textbf{package} is a collection of Java classes that serve some common purpose, like dealing with files or dealing with networks.  Several packages of classes are provided by Oracle as part of the Java language, and we Java programmers can create our own packages as well.
+\end{defn}
+
+There is a package called \lstinline{java.lang} which contains several classes that are needed by almost every Java program.  The classes in this package are always automatically available to every program we write, but other packages must be imported.
+
+\subsection{Importing Packages}
+
+When we need to use code from a package other than \lstinline{java.lang}, we usually have to write an import statement to make it available.  The format of an import statement is:
+
+\begin{javaformat}{Import Statement}
+import <package-name>.<class-name>; // imports one class
+import <package-name>.*;            // imports all classes in the package
+\end{javaformat}
+
+In the next section, we will be using a class called \lstinline{JOptionPane}, which is in a package called \lstinline{javax.swing}.  If we wish to use code from the \lstinline{JOptionPane} class white writing a class called \lstinline{BasicOutput}, then the first few lines of our code would look like this:
+
+\begin{lstlisting}
+import javax.swing.JOptionPane;
+
+public class BasicOutput {
+    // our code comes next
+\end{lstlisting}
+
+\section{Dialog Box Output}
+There are a couple of different ways we can have our programs display things on the screen, but we will use a \textit{dialog box} first.
+
+\index{Dialog Box}
+\begin{defn}{Dialog Box}
+A \textbf{dialog box} is a temporary on-screen window used to get information from the user or to display information for the user.
+\end{defn}
+
+We use the \lstinline{JOptionPane} class mentioned in the previous section to generate dialog boxes.  Specifically, we will use the \lstinline{showMessageDialog()} method of the class.
+
+\begin{javaformat}{Dialog Box Output}
+JOptionPane.showMessageDialog( null, <stuff to display> );
+\end{javaformat}
+
+We can use \lstinline{showMessageDialog()} to display a phrase:
+
+\begin{lstlisting}
+JOptionPane.showMessageDialog( null, "Hello world!" );
+\end{lstlisting}

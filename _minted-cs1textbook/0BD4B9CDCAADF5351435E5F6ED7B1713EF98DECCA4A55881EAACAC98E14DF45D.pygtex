@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{i1} \PYG{o}{=} \PYG{l+m+mi}{15}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{i2} \PYG{o}{=} \PYG{l+m+mi}{12}\PYG{o}{;}
+\PYG{k+kt}{boolean} \PYG{n}{b1} \PYG{o}{=} \PYG{n}{i1} \PYG{o}{\PYGZgt{}} \PYG{n}{i2}\PYG{o}{;}   \PYG{c+c1}{// b1 stores true}
+\PYG{k+kt}{boolean} \PYG{n}{b2} \PYG{o}{=} \PYG{n}{i1} \PYG{o}{\PYGZlt{}} \PYG{n}{i2}\PYG{o}{;}   \PYG{c+c1}{// b2 stores false}
+\end{Verbatim}

@@ -1,0 +1,62 @@
+% !TEX root = /Users/cmerlo//cs1textbook/cs1textbook.tex
+
+\chapter{A Very Basic Java Program}
+
+\minitoc
+
+The discussions in this chapter are meant to acquaint you with the layout and structure of a typical Java program.  You are \textbf{\textit{not expected}} to gain a great deal of understanding here; this is just to lay out the scaffolding of Java.  You will come to understand the details as you work through the textbook.
+
+\section{Basic Program Components}
+
+\subsection{Classes}
+
+We will defer a good working definition of the word \textit{class} as it's used in Java until later.  For now, understand that 99\% of all Java program code exists within the definition of a class.  The basic layout of a class is:
+
+\begin{javaformat}{Basic Class Layout}
+\begin{minted}{java}
+public class <class-name> {
+    <declarations>
+
+    <method-definitions>
+}
+\end{minted}
+\end{javaformat}
+
+\subsection{Methods}
+
+As with classes, a good working definition of what a method is awaits you later in this textbook (Section \ref{section:method-calls} to be precise).  For now, just understand that the most basic Java program requires one method, and it must be called \lstinline{main}.  The \textit{main method} must conform to this layout:
+
+\begin{javaformat}{Main Method}
+\begin{minted}{java}
+    public static void main( String args[ ] ) {
+        <declarations>
+
+        <statements>
+    }
+\end{minted}
+\end{javaformat}
+
+\subsection{Statements}
+A useful Java program must contain some \textit{statements}.  A fuller explanation about statements starts in Chapter \ref{chapter:info-numbers}, but the magic code you see in Section \ref{sec:helloworld} contains one \textit{declaration statement}, one \textit{assignment statement}, and one \textit{output statement}.
+
+\section{Hello World!}
+\label{sec:helloworld}
+
+The grand tradition of programming language textbooks is to introduce the language with a program that makes the phrase ``Hello world!''\ appear on the screen.  This author is a fan of that tradition.
+
+Note that this is a listing for a complete program; this source code can be compiled and run as-is, as long as it's stored in a source code file called \texttt{HelloWorld.java}.  Instructions for how to do this appear in Appendix \ref{appendix:compiling}.
+
+Also note that this is the textbook's first use of \textit{magic code}.  You are not meant to understand magic code right away -- while some of it might make sense now, its meaning will become clear later.
+
+\begin{magic}{Hello World}
+\begin{minted}{java}
+public class HelloWorld {
+    public static void main( String args[] ) {
+        String message;
+
+        message = new String( "Hello world!" );
+        System.out.println( message );
+    }
+}
+\end{minted}
+\end{magic}

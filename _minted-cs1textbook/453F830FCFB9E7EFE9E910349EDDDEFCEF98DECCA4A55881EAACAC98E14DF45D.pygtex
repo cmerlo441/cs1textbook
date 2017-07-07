@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{o}{;}
+
+\PYG{k}{if}\PYG{o}{(} \PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{10} \PYG{o}{);}
+    \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{5}\PYG{o}{;}
+\end{Verbatim}

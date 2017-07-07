@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{LongerString} \PYG{o}{\PYGZob{}}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{o}{(} \PYG{n}{String} \PYG{n}{args}\PYG{o}{[]} \PYG{o}{)} \PYG{o}{\PYGZob{}}
+        \PYG{n}{String} \PYG{n}{s1}\PYG{o}{;}
+        \PYG{n}{String} \PYG{n}{s2}\PYG{o}{;}
+        \PYG{k+kt}{int} \PYG{n}{longer}\PYG{o}{;}
+
+        \PYG{n}{s1} \PYG{o}{=} \PYG{k}{new} \PYG{n}{String}\PYG{o}{(} \PYG{l+s}{\PYGZdq{}This is a long string.\PYGZdq{}} \PYG{o}{);}
+        \PYG{n}{s2} \PYG{o}{=} \PYG{k}{new} \PYG{n}{String}\PYG{o}{(} \PYG{l+s}{\PYGZdq{}This one\PYGZsq{}s shorter.\PYGZdq{}} \PYG{o}{);}
+        \PYG{k}{if}\PYG{o}{(} \PYG{n}{s1}\PYG{o}{.}\PYG{n+na}{length}\PYG{o}{()} \PYG{o}{\PYGZgt{}} \PYG{n}{s2}\PYG{o}{.}\PYG{n+na}{length}\PYG{o}{()} \PYG{o}{)}
+            \PYG{n}{longer} \PYG{o}{=} \PYG{n}{s1}\PYG{o}{.}\PYG{n+na}{length}\PYG{o}{();}
+        \PYG{k}{else}
+            \PYG{n}{longer} \PYG{o}{=} \PYG{n}{s2}\PYG{o}{.}\PYG{n+na}{length}\PYG{o}{();}
+
+        \PYG{c+c1}{// add output statement}
+    \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

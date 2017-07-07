@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{numberOfGuests} \PYG{o}{=} \PYG{l+m+mi}{15}\PYG{o}{;}
+\PYG{k+kt}{double} \PYG{n}{fee}\PYG{o}{;}
+
+\PYG{k}{if}\PYG{o}{(} \PYG{n}{numberOfGuests} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{10} \PYG{o}{)}
+    \PYG{n}{fee} \PYG{o}{=} \PYG{l+m+mf}{39.99}\PYG{o}{;}
+\PYG{k}{else}
+    \PYG{n}{fee} \PYG{o}{=} \PYG{l+m+mf}{39.99} \PYG{o}{+} \PYG{o}{(} \PYG{o}{(} \PYG{n}{numberOfGuests} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{10} \PYG{o}{)} \PYG{o}{*} \PYG{l+m+mf}{3.99} \PYG{o}{);}
+\end{Verbatim}

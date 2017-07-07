@@ -1,0 +1,293 @@
+\documentclass[10pt,letterpaper,twoside]{book}
+\usepackage{etex} % http://tex.stackexchange.com/questions/7896/no-room-for-a-new-dimen-when-including-tikz
+\setlength{\parindent}{0em}
+
+\hyphenpenalty=5000
+\tolerance=1000
+
+\pdfpageheight 11in
+\pdfpagewidth 8.5in
+
+\setlength{\textwidth}{6.5in}
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt}
+
+\usepackage[usenames]{color}
+\usepackage[T1]{fontenc}
+\usepackage{%amsfonts,
+            %amsmath,
+            %amssymb,
+            %cancel,
+            caption,
+            colortbl,
+            enumerate,
+            enumitem,
+            fancyhdr,
+            graphicx,
+            lipsum,
+            listings,
+            lmodern,
+            lscape,
+            mathpazo,  % Palatino in Math Mode
+            makeidx,
+            mdframed,
+            minitoc,
+            morewrites,
+            multicol,
+            palatino,
+            %pgfplots,
+            subcaption,
+            tabularx,
+            tcolorbox,
+            tikz,
+            tikz-qtree,
+            titlesec,
+            url
+}
+\usepackage[newfloat]{minted}
+%\captionsetup[listing]{position=top}
+%\usepackage{imakeidx}
+\tcbuselibrary{listings,minted}
+
+\setminted[java]{%
+    linenos,
+    numbersep=0.5em,
+    xleftmargin=1em,
+    frame=leftline,
+    framesep=1em,
+    rulecolor=\color{nccblue}
+}
+%
+% \newmintedfile[javafile]{java}{%
+%     linenos,
+%     numbersep=0.5em,
+%     xleftmargin=1em,
+%     frame=single,
+%     framesep=1em
+% }
+
+\usemintedstyle{colorful}
+
+\definecolor{nccblue}{cmyk}{1,0.72,0,0.38}
+\definecolor{nccorange}{cmyk}{0,0.65,100,0.115}
+\definecolor{ncclightblue}{cmyk}{0.76,0.085,0,0}
+\definecolor{nccmuteblue}{cmyk}{1.0,0.06,0,0.034}
+\definecolor{coolgray4}{cmyk}{0,0,0,0.25}
+\definecolor{nccred}{cmyk}{0,0.91,0.94,0.305}
+\definecolor{nccpurple}{cmyk}{0.94,0.94,0,0}
+\definecolor{nccviolet}{cmyk}{0.43,0.56,0,0}
+\definecolor{nccgreen}{cmyk}{1,0,0.69,0.6}
+\definecolor{ncclightgreen}{cmyk}{0.305,0,0.6,0}
+
+\definecolor{figureback}{gray}{0.95}
+
+\usepackage[colorlinks=true,
+            linkcolor=nccblue,
+            urlcolor=nccorange,
+            linkbordercolor=nccblue,
+            urlbordercolor=nccorange,
+            pdfborderstyle={/S/U/W 1}]{hyperref}
+\urlstyle{same}
+\usepackage[scaled]{beramono}
+
+%\usepgfplotslibrary{external}
+%\tikzexternalize
+
+\renewcommand{\sfdefault}{cmss}% cmss = Computer Modern Sans-Serif
+
+%\usepackage{tocbibind}
+\usepackage[lmargin=1.5in,rmargin=0.75in,tmargin=1in,bmargin=1in]{geometry}
+
+%\usepackage{floatrow}% http://ctan.org/pkg/floatrow
+%\DeclareColorBox{shaded}{\colorbox{green!15}}% Shade is 15% black
+%\floatsetup{framestyle=colorbox,colorframeset=shaded,framefit=yes,heightadjust=all,framearound=all}
+
+% TikZ stuff
+%\usepackage[latin1]{inputenc}
+\usetikzlibrary{arrows,backgrounds,calc,decorations,decorations.pathreplacing,decorations.shapes,decorations.text,external,fit,positioning,shadows,shapes,trees}
+%\tikzexternalize[prefix=tikz/]
+
+\input{code-colors}
+\input{lstset}
+
+\DeclareCaptionFont{white}{\color{white}\sffamily}
+\DeclareCaptionFormat{listing}{\colorbox{nccblue}{\parbox{\textwidth}{~~#1#2#3}}}
+\captionsetup[listing]{format=listing,labelfont=white,textfont=white}
+
+% Figures
+\let\originalfigure=\figure
+\let\endoriginalfigure=\endfigure
+
+\renewenvironment{figure}[1][]{
+  \begin{originalfigure}[#1]
+    \begin{mdframed}[linecolor=nccblue,backgroundcolor=figureback]
+}{
+    \end{mdframed}
+  \end{originalfigure}
+}
+
+\DeclareCaptionFont{figure}{\color{nccblue}\sffamily}
+\DeclareCaptionFormat{figure}{\colorbox{figureback}{\parbox{\textwidth}{\textbf{#1}#2#3}}}
+\captionsetup[figure]{format=figure,labelfont=figure,textfont=figure}
+
+% \input{tikz-nodes}
+
+% Can't do chapter this way :(
+\titleformat*{\section}{\Large\bfseries\sffamily\color{nccblue}}
+\titleformat*{\subsection}{\large\bfseries\sffamily\color{nccblue}}
+\titleformat*{\subsubsection}{\normalsize\bfseries\sffamily\color{nccblue}}
+
+\titleformat{\chapter}[display]
+{\bfseries\Large\color{nccblue}}
+{\hfill \tikz[remember picture] \node[] (nr) {\fontsize{120}{70}\selectfont\color{nccorange}\textbf{\thechapter}};
+\begin{tikzpicture}[overlay,remember picture]
+\coordinate (leftborder) at ($(nr)-(100,0)$);
+\coordinate (left) at ($(nr.west)-(2.5,0)$);
+\draw[decoration={shape backgrounds,shape size=.5cm,shape=signal},signal from=west, signal to=east,decorate, draw=nccblue, fill=nccblue, decoration={shape sep=.5cm},line join=round] (leftborder) -- (left);
+\end{tikzpicture}}
+{-2ex}
+{\filleft\fontsize{50}{70}\selectfont\scshape}
+[\vspace{0ex}]
+
+\pagestyle{empty}
+
+%\definecolor{reviewcolor}{HTML}{F62817}     % Fire engine red
+
+\title{{\color{nccblue}\textbf{A Terse Introduction to Computer Science}}\\
+\small{Using Object-Oriented Program Design in the Java Programming Language}}
+\author{\textbf{Christopher R. Merlo}\\
+\small{Nassau Community College}\\
+\small{Garden City, NY}\\
+\small{\url{http://www.matcmp.ncc.edu/~cmerlo}}\\
+}
+
+% Itemize
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bmu}{\begin{multicols}}
+\newcommand{\emu}{\end{multicols}}
+
+%\setlength{\parskip}{3mm plus4mm minus3mm}
+
+\makeindex
+\begin{document}
+
+\let\stdsection\section
+%\renewcommand\section{\clearpage\stdsection}
+
+% \newcommand{\code}[1]{\textcolor{blue}{\textsf{#1}}}
+% \newcommand{\prop}[2]{\label{prop:#1}\textcolor{blue}{\textsf{\textbf{Proposition #1:}}} \textit{#2}}
+% \newcommand{\qed}{~\hfill\textcolor{blue}{$\blacksquare$}}
+
+\input{list-styles}
+
+\pagenumbering{roman}
+\maketitle
+
+\dominitoc
+\tableofcontents
+
+\cleardoublepage
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\adjustmtc
+
+\renewcommand\lstlistlistingname{List of Code Listings}
+
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{List of Code Listings}
+\adjustmtc
+
+\cleardoublepage
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\adjustmtc
+
+\cleardoublepage
+\tcblistof[\chapter*]{defn}{List of Definitions}
+\addcontentsline{toc}{chapter}{List of Definitions}
+\adjustmtc
+
+\cleardoublepage
+\tcblistof[\chapter*]{javaformat}{List of Formatting Examples}
+\addcontentsline{toc}{chapter}{List of Formatting Examples}
+\adjustmtc
+
+\cleardoublepage
+\tcblistof[\chapter*]{trap}{List of Code Traps}
+\addcontentsline{toc}{chapter}{List of Code Traps}
+\adjustmtc
+
+% Why doesn't this work??
+\cleardoublepage
+\tcblistof[\chapter*]{tip}{List of Programing Tips}
+\addcontentsline{toc}{chapter}{List of Programming Tips}
+\adjustmtc
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+\pagestyle{fancy}
+
+% Even page: chapter on right
+% Odd page: section on left
+
+\fancyhead[RE]{\sffamily\color{nccblue}\textbf{\small\nouppercase\leftmark}}
+\fancyhead[RO]{\sffamily\color{nccblue}\textbf{\thepage}}
+\fancyhead[LO]{\sffamily\color{nccblue}\textbf{\small\nouppercase\rightmark}}
+\fancyhead[LE]{\sffamily\color{nccblue}\textbf{\thepage}}
+\fancyfoot[C]{}
+
+\renewcommand{\headrule}{\hbox to\headwidth{%
+    \color{nccorange}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{25pt}%
+
+\renewcommand{\footrulewidth}{\headrulewidth}
+\renewcommand{\footrule}{\hbox to\headwidth{%
+    \color{nccorange}\leaders\hrule height \headrulewidth\hfill}}
+
+\renewcommand{\labelitemi}{\textcolor{nccorange}{$\bullet$}}
+\renewcommand{\labelenumi}{\color{nccorange}\Alph{enumi}\color{nccblue}.}
+\renewcommand{\labelenumii}{\color{nccblue}\arabic{enumii}\color{nccorange})}
+\renewcommand{\theenumiii}{\color{nccorange}\alph{enumiii}}
+\renewcommand{\theenumiv}{\color{nccblue}\roman{enumiv}}
+
+\parskip = \baselineskip
+\setlist[itemize]{itemsep=0.25em, topsep=0pt}
+
+\setcounter{chapter}{-1}
+\input{about-this-textbook}
+
+\part{The Basics}
+\input{computer-hardware}
+\input{aboutjava}
+\input{a-very-basic-java-program}
+\input{storing-info-and-numbers}
+\input{selection}
+\input{strings}
+\input{complex-selection}
+\input{methods}
+
+\part{Extending the Java Language}
+\input{classes2}
+
+% Sometime later...
+\part{I Don't Know Where This Goes Yet}
+\input{joptionpane}
+\input{io}
+
+\addcontentsline{toc}{part}{Appendix}
+\part*{Appendix}
+\appendix
+\input{appendix-compiling}
+\input{appendix-numbers}
+\input{appendix-ascii}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\addcontentsline{toc}{part}{Index}
+\printindex
+\end{document}

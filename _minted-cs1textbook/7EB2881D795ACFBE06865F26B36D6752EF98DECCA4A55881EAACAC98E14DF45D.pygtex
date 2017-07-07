@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{numberOfGuests}\PYG{o}{;}  \PYG{c+c1}{// The number of guests we invited}
+
+\PYG{k+kt}{int} \PYG{n}{numberOfGuests} \PYG{o}{=} \PYG{l+m+mi}{15}\PYG{o}{;}  \PYG{c+c1}{// Oops!}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{String} \PYG{n}{s1}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{characterCount}\PYG{o}{;}
+
+\PYG{n}{s1} \PYG{o}{=} \PYG{k}{new} \PYG{n}{String}\PYG{o}{(} \PYG{l+s}{\PYGZdq{}Hello world!\PYGZdq{}} \PYG{o}{);}
+\PYG{n}{characterCount} \PYG{o}{=} \PYG{n}{s1}\PYG{o}{.}\PYG{n+na}{length}\PYG{o}{();}
+\end{Verbatim}

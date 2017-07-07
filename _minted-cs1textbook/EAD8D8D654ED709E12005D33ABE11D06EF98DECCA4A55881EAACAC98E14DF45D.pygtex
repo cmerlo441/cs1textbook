@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{String} \PYG{n}{message} \PYG{o}{=} \PYG{k}{new} \PYG{n}{String}\PYG{o}{(} \PYG{l+s}{\PYGZdq{}Hello World!\PYGZdq{}} \PYG{o}{);}
+\PYG{k+kt}{int} \PYG{n}{position} \PYG{o}{=} \PYG{n}{message}\PYG{o}{.}\PYG{n+na}{indexOf}\PYG{o}{(} \PYG{l+s+sc}{\PYGZsq{}H\PYGZsq{}} \PYG{o}{);}
+\end{Verbatim}

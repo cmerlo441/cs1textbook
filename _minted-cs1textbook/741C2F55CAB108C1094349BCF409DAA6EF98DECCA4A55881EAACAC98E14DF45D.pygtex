@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{numberOfGuests} \PYG{o}{=} \PYG{l+m+mi}{15}\PYG{o}{;}
+
+\PYG{n}{numberOfGuests} \PYG{o}{=} \PYG{l+m+mi}{16}\PYG{o}{;}  \PYG{c+c1}{// The 15 is gone forever, and only the 16 is stored}
+\end{Verbatim}

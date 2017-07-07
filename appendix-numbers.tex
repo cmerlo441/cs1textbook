@@ -1,0 +1,84 @@
+% !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
+
+\chapter{Number Systems}
+\label{appendix:numbersystems}
+
+\minitoc
+
+This appendix explains why programmers seem to choose to represent numbers in a different base, or \textit{radix}, than what you may be used to, and how you can try to convert between different radices.
+
+\setcounter{section}{9}
+\section{Decimal Numbers}
+The numbers that the average person encounters in his or her daily life are all represented as \textit{decimal} numbers.  The Latin root \textit{dec-} refers to the number 10, as illustrated in the words for a collection of ten years (\textit{decade}) or a collection of ten units of loudness (\textit{decibel}).
+
+Each digit in a decimal number has a place name - the ones place, the tens place, the hundreds place, etc. - that describes the meaning of the digit.  For instance, in the decimal number 3502, we're meant to understand that there are three thousands, five hundreds, no tens, and two ones, or:
+
+\[ 3502 = 3 \cdot 1000 + 5 \cdot 100 + 0 \cdot 10 + 2 \cdot 1 \]
+
+Notice that each of these place names corresponds to a power of 10, so we can also write 3502 as:
+
+\begin{equation}\label{base10}3502 = 3 \cdot 10^3 + 5 \cdot 10^2 + 0 \cdot 10^1 + 2 \cdot 10^0\end{equation}
+
+This leads to the description of decimal numbers as \textit{base ten} numbers, because the base in each of those exponential expressions in Equation \ref{base10} is 10.  Notice also that the base ten system provides ten digits.  Any number composed of a sequence of only the last digit, like 99, or 999,999, will be followed by a number composed of a 1 followed by a sequence of zeroes, like 100 or 1,000,000.
+
+\setcounter{section}{1}
+\section{Binary Numbers}
+The decimal number system is not, however, the most convenient way to discuss computer systems.  The state of any component of a computer can usually be described in one of two ways -- open or closed, high voltage or low voltage, magnetically north or magnetically south, etc.  For this reason, data storage and transmission are often described instead using \textit{binary} numbers, from the Latin root \textit{bi-} for two (\textit{bicycle}, \textit{bidirectional}, \textit{binaural}).  The \textbf{binary number system}\index{Binary}, also called \textit{base two}, defines numbers in a two-digit system, where each exponent's base is 2.  For instance, the binary number 11101 represents this idea:
+
+\begin{equation}
+    \begin{array}{ccccccccccc}
+    11101_2 &=& 1 \cdot 2^4 &+& 1 \cdot 2^3 &+& 1 \cdot 2^2 &+& 0 \cdot 2^1 &+& 1 \cdot 2^0\\
+    &=& 16 &+& 8 &+& 4 &+& 0 &+& 1\\
+    &=& 29
+\end{array}
+\end{equation}
+
+Since the largest binary digit is 1, any binary number composed of all 1s will be followed by a number consisting of a 1 and a sequence of zeros; for instance, $111_2 + 1 = 1000_2$.
+
+Notice that the most correct term for a \underline{bi}nary digi\underline{t} is \textit{bit}.
+
+\setcounter{section}{15}
+\section{Hexadecimal Numbers}
+
+As one counts upward in binary numbers, the length in bits grows exponentially compared to the length of their decimal equivalents.  Even a relatively small decimal number like 351 turns into the nine-bit number $101011111_2$.  It is incredibly difficult for humans to read long sequences of zeros and ones such as this.  However, it is also difficult to convert between base two and base ten, in either direction, in one's head.  There is no pattern to follow, and the amount of memorization required is way out of proportion with the usefulness of such a task.
+
+There is, however, a way to represent these numbers in a shorter format, that supports much easier conversion.  The term \textbf{hexadecimal}\index{Hexadecimal} was composed from the Greek root \textit{hexa-} for 6 and the Latin root \textit{dec-} for ten, to help us talk about numbers in \textit{base sixteen}.  The sixteen digits in hexadecimal are the ten decimal digits 0-9, and then the first six letters of the alphabet, so that $10_{10} =$ A$_{16}$, $11_{10} =$ B$_{16}$, and so on.  Since $16 = 2^4$, each hex digit corresponds to a unique four-bit sequence.  With a little bit of practice, even a novice programmer can become accustomed to interpreting \verb-0011- as \verb-3-, \verb-1010- as \verb-A-, and \verb-1111- as \verb-F-, and so any binary number can be written as a hex number using no more than 25\% of the digits.
+
+It follows, then, that any byte -- which represents a number in the range $2^0 \le n < 2^8$ -- can be written using two hex digits, since $0_{10} = 00000000_2 = 00_{16}$, and $255_{10} = 11111111_2 = $ FF$_{16}$.  For instance, using the examples from the previous paragraph, the number $00111010_2$ is equal to the number 3A$_{16}$.
+
+\setcounter{section}{7}
+\section{Octal Numbers}
+
+While less frequently used, it is useful to mention here that \textit{base eight} digits, called \textbf{octal}\index{Octal} (think about an \textit{octagon}) can represent a three-bit sequence.  The commands to alter a file's permissions in Unix take advantage of octal numbers.  Unix file permissions come in three varieties -- read permission, write permission, and execute permission -- and in three groups -- what the file's owner is allowed to do, what members of the owner's group are allowed to do, and what other users on the system are allowed to do.  Each permission can be thought of as a \textit{flag}, or a Boolean setting: a 1 means permission is granted, and a 0 means that permission is not granted.  So, to give the owner of a file called \texttt{foo.txt} permission to read and write a file, but not to execute it (\texttt{110}), and to allow others only to read the file (\texttt{100}), the Unix command would look like:
+
+\begin{center}\texttt{chmod 644 foo.txt}\end{center}
+
+since $6_8 = 110_2$ and $4_8 = 100_2$.
+
+\section*{Number Systems Compared}
+
+The following table shows how to write the decimal numbers 0 through 16 in binary, octal, and hex.
+
+\begin{center}
+\begin{tabular}{rrrr}
+\textbf{Binary} & \textbf{Octal} & \textbf{Decinal} & \textbf{Hexadecimal}\\
+\hline
+0 & 0 & 0 & 0\\
+1 & 1 & 1 & 1\\
+10 & 2 & 2 & 2\\
+11 & 3 & 3 & 3\\
+100 & 4 & 4 & 4\\
+101 & 5 & 5 & 5\\
+110 & 6 & 6 & 6\\
+111 & 7 & 7 & 7\\
+1000 & 10 & 8 & 8\\
+1001 & 11 & 9 & 9\\
+1010 & 12 & 10 & A\\
+1011 & 13 & 11 & B\\
+1100 & 14 & 12 & C\\
+1101 & 15 & 13 & D\\
+1110 & 16 & 14 & E\\
+1111 & 17 & 15 & F\\
+10000 & 20 & 16 & 10\\
+\end{tabular}
+\end{center}

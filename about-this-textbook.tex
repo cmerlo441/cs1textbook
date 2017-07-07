@@ -1,0 +1,71 @@
+% !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
+
+\chapter{About This Textbook}
+
+\minitoc
+
+\section{Philosophy}
+
+\subsection{Terseness}
+This book was written with the intention that you could read it fairly quickly.  The goal was to maximize the ratio of valuable information to text length.  Many textbook authors seem to favor very long descriptive passages; however, in this author's experience, students don't read most of them.  If you're learning how to program, you probably want your textbook to just get to the good stuff, and so that's what this author has tried to do here.
+
+\subsection{Magic Code}\label{subsection:magiccode}
+Java is a great language for professional programming, and due to this it has become for many educators the language of choice for teaching to beginning programmers.  One negative aspect of this choice is that it is virtually impossible for a beginning programmer to understand every component of even the simplest working Java program.  The author has tried to reduce this book's reliance on \textit{magic code} -- that code about which instructors must say ``I'll explain why this works later'' -- to a minimum, but there's no way to eliminate it in Java.  Most students should, however, understand all aspects of a minimally-functional Java program by the end of the first course.
+
+\section{Conventions}
+
+\subsection*{Typeface}
+
+Regular text has been typeset in the Palatino typeface.  Source code examples and system input and output text have been typeset in the \texttt{Beramono} typeface.  Headings have been typeset in the \textsf{CMU sans serif} typeface.
+
+\subsection*{Definitions}
+
+Important definitions are presented in this style:
+
+\begin{defn*}{Variable}
+A \textbf{variable} is a particular spot in the computer's memory to which we assign a name.
+\end{defn*}
+
+\subsection*{Code Formatting Examples}
+
+Code formatting examples are presented in this style:
+
+\begin{javaformat*}{Declaration Statement}
+<data-type> <identifier>;
+\end{javaformat*}
+
+In a code format example such as this, anything presented in \texttt{<angle brackets>} should be read as a \textit{description} of code, rather than actual code.  Anything else should appear as typed in the example.
+
+\subsection*{Magic Code}
+\textit{Magic code}, as defined in Section \ref{subsection:magiccode}, is presented in this style:
+
+\begin{magic*}{Magic Code Example}
+Here's a description of some magic code.\\
+
+\lstinline{magic.code();}\\
+
+It is expected that these magic code boxes will use terminology you don't understand yet.  They are intended to present a small piece of code that you can use now, and learn to understand what it does later.
+\end{magic*}
+
+\subsection*{Code Traps}
+
+Code formatted like this is a \textit{code trap}:
+\begin{trap*}{Indentation}
+<condition>\\
+\phantom{xxxx}<a statement>\\
+\phantom{xxxx}<another statement>
+\end{trap*}
+
+Such formatting indicates a programming mistake that is easy to make, and often difficult to detect.
+
+\subsection*{Programming Tips}
+
+There are rules, and there are guidelines.  Things that programmers \textit{should} do are formatted as programming tips:
+
+\begin{tip*}{Indent Consistently}
+    Proper and consistent indendation makes your code easier to read.
+\end{tip*}
+
+\section{About the Author}
+
+Christopher R. Merlo is a Professor of Mathematics and Computer Science at Nassau Community College in Garden City, NY, USA, where he has worked since the Fall of 2000.  He earned a BA in Mathematics and Computer Science from Molloy College, Rockville Centre, NY, and an MS in Computer Science from the University of Vermont, Burlington, VT.  He worked as a professional developer for about two years before joining academia.  When he isn't teaching, you might find him playing bass guitar and Chapman Stick in the band The Yellow Box, driving a fire engine as a volunteer in the Rockville Centre Fire Department, or taking his wife and son to a Mets game.

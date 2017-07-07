@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{err}{\PYGZlt{}}\PYG{n+nc}{class}\PYG{o}{\PYGZhy{}}\PYG{n}{name}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZob{}}
+    \PYG{o}{\PYGZlt{}}\PYG{n}{declarations}\PYG{o}{\PYGZgt{}}
+
+    \PYG{o}{\PYGZlt{}}\PYG{n}{method}\PYG{o}{\PYGZhy{}}\PYG{n}{definitions}\PYG{o}{\PYGZgt{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

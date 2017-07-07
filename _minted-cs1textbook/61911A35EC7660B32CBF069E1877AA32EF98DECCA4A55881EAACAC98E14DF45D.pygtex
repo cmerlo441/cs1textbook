@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Point} \PYG{o}{\PYGZob{}}  \PYG{c+c1}{// This line is the header}
+    \PYG{c+cm}{/* The body of the class will go here */}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,33 @@
+%!TEX root = /Users/cmerlo//cs1textbook/cs1textbook.tex
+
+\chapter{Computer Hardware}
+
+\minitoc
+
+There are lots of gadgets in the world these days that can be described as computers, from what we typically think of as ``computers'' -- metal and plastic boxes with standalone monitors and keyboards attached -- to small form factor machines like the Mac Mini, to video game consoles like the Xbox, to tablets and mobile phones, to tiny system-on-a-chip designs like the Raspberry Pi.  All of these devices have a few things in common, though.
+
+This chapter will not make you an expert in computer hardware, but you will learn some important things about how the programs you write will interact with the computer's components.
+
+\section{The Central Processing Unit}
+
+Every computer has a \index{Central Processing Unit}\textbf{Central Processing Unit} (CPU), which is responsible for actually performing most of the instructions in any computer program.  It's cool.
+
+\section{Memory}
+
+...  As you will see in Section \ref{sec:using-memory}, ...
+
+\section{Secondary Storage}
+
+\section{Input/Output Devices}
+
+\subsection{The Console}
+\label{subsection:console}
+
+When computers were first being developed, before the days of Bluetooth trackpads and touch screens, the only way to enter information into the computer efficiently was with a keyboard, and the only way to see what the computer was doing efficiently was on a screen.\footnote{Actually, before all that, computers could only do input and output with punched cardboard cards!}  These two devices were often referred to collectively as the console.
+
+\index{Console}
+\begin{defn}{Console}
+A computer's \textbf{console}, in hardware terms, is its keyboard and monitor.  In software terms, the word console is used as a metonym for non-graphical input and output, also called \textit{character-based} input and output.
+\end{defn}
+
+\subsection{Graphical User Interfaces}

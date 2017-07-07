@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{5}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{11}\PYG{o}{;}
+\PYG{k+kt}{int} \PYG{n}{z} \PYG{o}{=} \PYG{n}{x} \PYG{o}{+} \PYG{n}{y}\PYG{o}{;}  \PYG{c+c1}{// z stores 16}
+\end{Verbatim}

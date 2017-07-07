@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{double} \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{5}\PYG{o}{;}  \PYG{c+c1}{// Automatic promotion; not a type mismatch!}
+\end{Verbatim}

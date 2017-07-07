@@ -1,0 +1,33 @@
+% !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
+
+\chapter{Input and Output}
+
+\minitoc
+
+In this chapter, we will explore two different systems that we can exploit for input and output; that is, allowing our program's user to give information to our programs, and allowing our programs to send information out to the user.
+
+\section{Console Input and Output}
+\label{sec:console-io}
+Recall that the word \textit{console}, as defined in Subsection \ref{subsection:console}, can be used to refer to hardware devices, but also to a method of performing input and output.  Graphical user interfaces will be introduced in the next section (Section \ref{section:gui}), but this section will focus on a more ``old fashioned'' method of getting data in and out of the program.
+
+\subsection{Data Streams}
+Every operating system provides every program with a low-level way for collecting data from the operating system, and two low-level ways for sending data back out.  These are called \textit{streams}, as illustrated in this table:
+
+\begin{table}[h]
+\begin{tcolorbox}[tabularx={X|p{4.5in}}]
+\textbf{Stream} & \textbf{Description}\\
+\hline
+Standard Input & A buffered stream for keyboard input\\
+Standard Output & A buffered stream for monitor output; used for normal program output\\
+Standard Error & An \textit{unbuffered} stream for monitor output; used for exceptional program output, like error messages\\
+\hline
+\end{tcolorbox}
+\caption{Input/Output Streams}
+\label{table:streams}
+\end{table}
+
+
+
+\section{Graphical User Interfaces}
+\label{section:gui}
+Foo.

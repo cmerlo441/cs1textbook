@@ -1,0 +1,26 @@
+% !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
+
+\chapter{Compiling and Running Your Java Program}
+\label{appendix:compiling}
+
+\minitoc
+
+\section{The Compiler}
+
+In any compiled language, the purpose of the \textbf{compiler}\index{Compiler} is to turn your human-readable source code into a variety of machine-readable code, so that it can be executed by the CPU.  If the source code has any \textbf{syntax errors}\index{Error!Syntax error}, the compiler will fail.  Different compilers generate more or less helpful error messages when this happens.
+
+Java's compiler, when the source code complies with the rules of Java syntax, creates a \textbf{bytecode}\index{Bytecode} file, whose name ends with the \verb-.class- suffix.
+
+\subsection{The Java Virtual Machine}
+Java's compiler actually creates machine-readable code for a computer that doesn't exist.  The developers of the Java language invented an imaginary computer called the Java Virtual Machine.  Whereas a C programmer on a Mac and a C programmer on Windows could compile the same source code and wind up with two completely different executable programs, when they compile the same Java source code, they will generate exactly the same bytecode, because it's native code for the Java Virtual Machine (JVM).
+
+\section{The Interpreter}
+
+Once Java source code has been compiled to bytecode, it becomes native machine-language code for the JVM, a computer that doesn't exist.  To run the program, it must become the input to a Java \textbf{interpreter}\index{Interpreter}.  The interpreter translates the JVM's instructions into the native instructions necessary on the host system.  One user can run the bytecode file through the interpreter on a Mac, and another user can run the bytecode file using a Windows interpreter, and the users will have essentially the same experience, although each platform's interpreter is turning the bytecode instructions into very different host-machine instructions.
+
+\section{Compiling and Running From the Command Line}
+\textit{Note: There is probably a way to do this stuff on a Windows system, but this author doesn't know what that would be.  This section assumes the programmer is using a Unix-like system such as Linux or OS X.}
+
+
+
+\section{Integrated Development Environments}

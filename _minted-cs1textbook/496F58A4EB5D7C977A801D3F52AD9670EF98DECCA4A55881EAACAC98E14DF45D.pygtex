@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{char} \PYG{n}{c1} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}W\PYGZsq{}}\PYG{o}{;}
+\PYG{k+kt}{char} \PYG{n}{c2} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}?\PYGZsq{}}\PYG{o}{;}
+\PYG{k+kt}{char} \PYG{n}{c3} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{o}{;}  \PYG{c+c1}{// a space}
+\PYG{k+kt}{char} \PYG{n}{c4} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}9\PYGZsq{}}\PYG{o}{;}
+\end{Verbatim}

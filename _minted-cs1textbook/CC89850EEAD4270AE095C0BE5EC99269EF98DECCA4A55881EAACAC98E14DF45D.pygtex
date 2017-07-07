@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Point} \PYG{o}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{x}\PYG{o}{;}  \PYG{c+c1}{// x component of Cartesian ordered pair}
+    \PYG{k+kt}{int} \PYG{n}{y}\PYG{o}{;}  \PYG{c+c1}{// y component of Cartesian ordered pair}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}
