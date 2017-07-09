@@ -1,6 +1,6 @@
 % !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
 
-\chapter{Default Constructors}
+\chapter{Default Constructors and Accessors}
 \label{chapter:default-constructors}
 
 \minitoc
@@ -45,5 +45,65 @@ public class Point {
         x = 0;
         y = 0;
     }
+}
+\end{minted}
+
+\section{Accessors}
+
+Now that the default constructor has been written, we might assume that code like:
+
+\begin{minted}{java}
+Point p1 = new Point();
+\end{minted}
+
+generates a \texttt{Point} class object that stores the coordinate $(0,0)$.  But we don't know this for sure until we can get the data back out of the object.  Remember that code like \mintinline{java}{System.out.println( p1.x );} will still result in a syntax error, because the instance variables are \mintinline{java}{private}.  Writing \textit{accessor methods} will solve this problem.
+
+\begin{defn}{Accessor}
+    An \textbf{accessor method}\index{Methods!Accessors} is a method that grants public access to private data.
+\end{defn}
+
+The generally accepted conventions for accessor methods are as follows:
+\bi
+\item Write one accessor per instance variable (or fewer -- you might not want to grant access to every instance variable)
+\item Begin the method's identifier with \texttt{get}, or \texttt{is} if the instance variable is of type \mintinline{java}{boolean}
+\item Finish the method's identifier with the name of the instance variable, capitalizing the first letter
+\item The return type of the method should be the same as the type of the instance variable
+\item The method should not do anything other than return the value of the instance variable
+\ei
+
+Following these conventions, the accessor method for the \texttt{x} instance variable should look like this:
+
+\begin{minted}{java}
+    // Accessor method for x
+    public int getX() {
+        return x;
+    }
+\end{minted}
+
+And \texttt{y}'s accessor should look like this:
+
+\begin{minted}{java}
+    // Accessor method for y
+    public int getY() {
+        return y;
+    }
+\end{minted}
+
+\section{Testing}
+
+Now that the accessor methods exist for the \texttt{Point} class, we can use them to test the default constructor.  In general, you should test your code frequently -- every time you add or edit a new method, you should run it a few times, and run all the other code that depends on this new code, to make sure all the interactions are working the way you want.  One minor change can have unintended consequences in some other part of your code, but if you test frequently, you can greatly reduce the amount of code you have to search through to find your bug.
+
+\begin{tip}{Run Your Code Early and Often}
+    something about bugs snowballing
+\end{tip}
+
+Now we can write an application like this to make sure that our default constructor has the effect we want:
+
+\begin{minted}{java}
+public class TestPoint {
+    Point p1 = new Point();  // we assume this Point contains (0,0)
+    
+    System.out.println( "p1's x value is " + p1.getX() );
+    System.out.println( "p1's y value is " + p1.getY() );
 }
 \end{minted}
