@@ -128,51 +128,51 @@ What happens here might surprise you.  We human readers of the English language 
     A \textbf{semantic error}\index{Error!Semantic error} is an error in logic or meaning.  Typically, we notice semantic errors in code that has compiled and is running, because only a program that's running can generate incorrect output.
 \end{defn}
 
-% \subsection{Visibility}
-%
-% Thus, we learn the most important responsibility of Java programmers: We must protect the data in our classes, because relying on others to do the right thing will not work.
-%
-% \begin{tip}{Data Protection}
-%     When designing a Java class, you must ensure that the data in its instance variables will always be valid.  If you don't work to ensure this, then there will come a point where the data will become invalid.
-% \end{tip}
-%
-% The path to ensuring data validity starts with changing the \textit{visibility} of the instance variables.  We will mark \mintinline{java}{x} and \mintinline{java}{y} as \mintinline{java}{private}, like this:
-%
-% \begin{minted}{java}
-% public class Point {
-%     private int x;  // x component of Cartesian ordered pair
-%     private int y;  // y component of Cartesian ordered pair
-% }
-% \end{minted}
-%
-% The value of a \mintinline{java}{private} variable can not be retrieved or changed by any code outside the class.  This protects our data from being made negative by the \mintinline{java}{TestPoint} class:
-%
-% \begin{minted}{java}
-% public class TestPoint {
-%     public static void main( String args[] ) {
-%         Point p1 = new Point();  // p1 should represent a point on the screen
-%         p1.x = -35;   // This is now a syntax error!
-%         p1.y = -17;   // And so is this!  Success!
-%     }
-% }
-% \end{minted}
-%
-% But we have now done too good a job of protecting our data, because we can't set the variables with good data.  We can't even print their values!
-%
-% \begin{minted}{java}
-% public class TestPoint {
-%     public static void main( String args[] ) {
-%         Point p1 = new Point();  // p1 represents a point on the screen
-%         p1.x = 10;   // This seemingly-valid request is now a syntax error
-%         p1.y = 15;   // So is this
-%
-%         // And we can't even do this any more:
-%         System.out.println( "The point is at (" + p1.x + "x" + p1.y + ")." );
-%     }
-% }
-% \end{minted}
-%
-% The instance variables still need to be \mintinline{java}{private}; the way to fix this problem is to give limited \mintinline{java}{public} access to viewing and changing the instance variables' values.
+\subsection{Visibility}
+
+Thus, we learn the most important responsibility of Java programmers: We must protect the data in our classes, because relying on others to do the right thing will not work.
+
+\begin{tip}{Data Protection}
+    When designing a Java class, you must ensure that the data in its instance variables will always be valid.  If you don't work to ensure this, then there will come a point where the data will become invalid.
+\end{tip}
+
+The path to ensuring data validity starts with changing the \textit{visibility} of the instance variables.  We will mark \mintinline{java}{x} and \mintinline{java}{y} as \mintinline{java}{private}, like this:
+
+\begin{minted}{java}
+public class Point {
+    private int x;  // x component of Cartesian ordered pair
+    private int y;  // y component of Cartesian ordered pair
+}
+\end{minted}
+
+The value of a \mintinline{java}{private} variable can not be retrieved or changed by any code outside the class.  This protects our data from being made negative by the \mintinline{java}{TestPoint} class:
+
+\begin{minted}{java}
+public class TestPoint {
+    public static void main( String args[] ) {
+        Point p1 = new Point();  // p1 should represent a point on the screen
+        p1.x = -35;   // This is now a syntax error!
+        p1.y = -17;   // And so is this!  Success!
+    }
+}
+\end{minted}
+
+But we have now done too good a job of protecting our data, because we can't set the variables with good data.  We can't even print their values!
+
+\begin{minted}{java}
+public class TestPoint {
+    public static void main( String args[] ) {
+        Point p1 = new Point();  // p1 represents a point on the screen
+        p1.x = 10;   // This seemingly-valid request is now a syntax error
+        p1.y = 15;   // So is this
+
+        // And we can't even do this any more:
+        System.out.println( "The point is at (" + p1.x + "x" + p1.y + ")." );
+    }
+}
+\end{minted}
+
+The instance variables still need to be \mintinline{java}{private}; the way to fix this problem is to give limited \mintinline{java}{public} access to viewing and changing the instance variables' values.
 
 \section{Constructors}
 
@@ -214,52 +214,3 @@ public class Point {
     }
 }
 \end{minted}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Reference Variables}
-\label{section:reference-variables}
-
-In Section \ref{section:string} we learned that a variable of type \mintinline{java}{String} must be \textit{instantiated} using code like \mintinline{java}{String s1 = new String( "Hello world!" );}.  The way this \mintinline{java}{String} is stored, however, is quite different from how an integer is stored.  The value is not directly stored in the variable.  Consider this code:
-
-\begin{minted}{java}
-int x1 = 15;
-String s1 = new String( "Hello world!" );
-\end{minted}
-
-Figure \ref{fig:reference-variable} shows how the values are stored.
-
-\begin{figure}[ht]
-    \begin{center}
-        \sffamily
-        \begin{subfigure}{0.2\textwidth}
-            \begin{center}
-                \begin{tikzpicture}[var/.style={draw=nccblue,fill=nccorange,text=white,minimum width = width{"Hello world!"}, minimum height=1.25pt,inner sep=2pt,outer sep=2pt}]
-                    \node (x1) [var] {15};
-                    \node [above = 2mm of x1] {x1};
-                \end{tikzpicture}
-        \end{center}
-            \caption{\mintinline{java}{int x1 = 15;}}
-        \end{subfigure}%
-        \begin{subfigure}{0.4\textwidth}
-            \begin{center}
-                \begin{tikzpicture}[var/.style={draw=nccblue,fill=nccorange,text=white,minimum height=2pt,inner sep=2pt,outer sep=2pt},data/.style={draw=nccblue,fill=white,text=nccblue,inner sep=2pt,outer sep=2pt}]
-                    \node (s1) [var] {\textcolor{nccorange}{X}\textcolor{nccblue}{\raisebox{0.25ex}{$\bullet$}}\textcolor{nccorange}{X}};
-                    \node (hw) [data,right = 1cm of s1] {Hello world!};
-                    \node [above = 2mm of s1] {s1};
-
-                    \path [->,draw,thick,nccblue] (s1.center) -- (hw);
-                \end{tikzpicture}
-            \end{center}
-            \caption{\mintinline{java}{String s1 = new String( "Hello world!" );}}
-        \end{subfigure}
-    \end{center}
-    \caption{How Integers and Strings Are Stored in Memory}
-    \label{fig:reference-variable}
-\end{figure}
-
-The actual string is stored some place in memory away from the variable \mintinline{java}{s1}, and what \mintinline{java}{s1} stores is the numeric location of this place in memory.  We say that \mintinline{java}{s1} is a \textbf{reference variable} because it contains a \textit{reference} to the string ``Hello world!''.
-
-\begin{defn}{Reference Variable}
-    A \textbf{reference variable}\index{Reference Variable} is a variable that stores a \textit{reference} to, or the memory address of, a piece of data stored somewhere else in memory.
-\end{defn}
