@@ -1,34 +1,15 @@
 % !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
 
-\chapter{Classes}
+\chapter{Introduction to Creating Classes}
 \label{chapter:classes}
 
 \minitoc
 
-\section{Built-In Data Types}
+%\section{The \texttt{Point} Class}
 
-The Java language provides a few ways to represent data.  In Chapter \ref{chapter:info-numbers} we learned a couple of the ways Java allows us to store numbers.  Truth values were discussed in Chapter \ref{chapter:if}.  Then, in Chapter \ref{chapter:char}, we learned how to store characters and strings.  But, as they said on Sesame Street, one of these things is not like the others.
+We will begin our geometry case study by creating a data type to represent the smallest unit of geometry -- the point -- and build up in complexity from there.  \href{https://en.wiktionary.org/wiki/point}{Wiktionary defines a geometrical point} as ``A zero-dimensional mathematical object representing a location in one or more dimensions; something considered to have position but no magnitude or direction''.  We will define our \mintinline{java}{Point} class to represent an object on a two-dimensional Cartesian plane, since this is a good analogy for a computer screen.  A detail that will become important later is that several computer graphics paradigms, including the one we'll be working under later, fix the origin of the screen's Cartesian plane at the top left of the screen, so that $x$ values increase from right to left and $y$ values increase from the top of the screen to the bottom; this results in all $x$ and $y$ values being non-negative.  A monitor with 1024$\times$768 resolution, therefore, would find the point $(1024,768)$ at the bottom right of the screen, as in Figure \ref{fig:monitor}.
 
-\subsection{Primitive Data Types}
-
-In Section \ref{section:string}, it was noted that the data types \mintinline{java}{int}, \mintinline{java}{double}, \mintinline{java}{boolean}, and \mintinline{java}{char} are \textbf{primitive data types}\index{Primitive Data Types}, without defining the term.  For now, we will define a variable of a primitive data type as one that stores a value directly, but this won't mean much until we explore the other kind of data type.
-
-\subsection{Classes Are Also Data Types}
-We also learned in \ref{section:string} that the \mintinline{java}{String} data type is part of the Java language.  \mintinline{java}{String} is also the name of a Java class.  A \textbf{class} serves as a data type in Java, and in this chapter we will explore how to create our own data types.
-
-Java programmers use the word \textit{class} to describe a group of objects with similar characterisics or uses; for instance, acoustic 12-string guitars are one class of musical instruments, and wide receivers are one class of football players.  When we define a class, we specify what objects of that class will be like, and we explain what sort of tasks these objects will be able to perform.
-
-\begin{defn}{Class}
-    A \textbf{class}\index{Class!Definition} is a Java data type.  We programmers can create our own data types by defining our own classes.  A typical Java class defines the \textit{properties} and \textit{behaviors} of the variables of this type that will be created.
-\end{defn}
-
-Throughout this Part of the book, we will be developing an application as a case study.  Specifically, we will be designing a program that children can use to draw geometric shapes on the screen, and learn about some of these shapes' important characteristics like area, perimeter, volume, etc.
-
-\section{Writing The \mintinline{java}{Point} Class}
-
-We will begin our geometry case study by creating a data type to represent the smallest unit of geometry -- the point -- and build up in complexity from there.  \href{https://en.wiktionary.org/wiki/point}{Wiktionary defines a geometrical point} as ``A zero-dimensional mathematical object representing a location in one or more dimensions; something considered to have position but no magnitude or direction''.  We will define our \mintinline{java}{Point} class to represent an object on a two-dimensional Cartesian plane, since this is a good analogy for a computer screen.  A detail that will become important later is that several computer graphics paradigms, including the one we'll be working under later, fix the origin of the screen's Cartesian plane at the top left of the screen, so that $x$ values increase from right to left and $y$ values increase from the top of the screen to the bottom.  A monitor with 1024$\times$768 resolution, therefore, would find the point $(1024,768)$ at the bottom right of the screen, as in Figure \ref{fig:monitor}.
-
-\begin{figure}
+\begin{figure}[ht]
     \color{nccblue}
     \begin{center}
         \begin{tikzpicture}
@@ -46,7 +27,7 @@ We will begin our geometry case study by creating a data type to represent the s
     \label{fig:monitor}
 \end{figure}
 
-\subsection{Class Header}
+\section{Class Header}
 
 Every class definition begins with a class \textit{header}.  The header defines the class' visibility and its name.  This is how a simple class header looks:
 
@@ -71,7 +52,7 @@ Section \ref{sec:using-memory} also lists some guidelines regarding naming a var
 \item Classes define \textit{things}, so the name should be a \textit{noun}.
 \ei
 
-For the \mintinline{java}{Point} class, the header will look like the first line of this code:
+For the \texttt{Point} class, the header will look like the first line of this code:
 
 \begin{minted}{java}
 public class Point {  // This line is the header
@@ -81,11 +62,11 @@ public class Point {  // This line is the header
 
 Notice that I have put the opening curly brace of the body at the end of the header.  Some programmers choose instead to place an opening curly brace on the next line.
 
-\subsection{Instance Variables}
+\section{Instance Variables}
 
 After the class header, the rest of the class' definition -- the \textit{body} of the class -- appear inside curly braces.  The first thing that most programmers put at the top of the class' body is a list of the class' \textit{properties}.  This list consists of variable declarations that describe the data an object of this class will contain.
 
-One instance of the \mintinline{java}{Point} class should contain enough information to complete an ordered pair in $(x,y)$ format.  We'll assume some knowledge about computer monitors -- specifically, that there are no partial pixels -- and specify that both the $x$ value and the $y$ value must be integers.
+One instance of the \texttt{Point} class should contain enough information to complete an ordered pair in $(x,y)$ format.  We'll assume some knowledge about computer monitors -- specifically, that there are no partial pixels -- and specify that both the $x$ value and the $y$ value must be integers.
 
 \begin{minted}{java}
 public class Point {
@@ -94,9 +75,9 @@ public class Point {
 }
 \end{minted}
 
-Variables like these, declared in class scope, are called \textbf{instance variables}\index{Variable!Instance variable}, because every instance of the \mintinline{java}{Point} class that we create will store values in these variables.
+Variables like these, declared in class scope, are called \textbf{instance variables}\index{Variable!Instance variable}, because every instance of the \texttt{Point} class that we create will store values in these variables.
 
-In a different class, we will create a \mintinline{java}{Point} object and place some data in these instance variables:
+In a different class, we will create a \texttt{Point} object and place some data in these instance variables:
 
 \begin{minted}{java}
 public class TestPoint {
@@ -128,7 +109,7 @@ What happens here might surprise you.  We human readers of the English language 
     A \textbf{semantic error}\index{Error!Semantic error} is an error in logic or meaning.  Typically, we notice semantic errors in code that has compiled and is running, because only a program that's running can generate incorrect output.
 \end{defn}
 
-\subsection{Visibility}
+\section{Visibility}
 
 Thus, we learn the most important responsibility of Java programmers: We must protect the data in our classes, because relying on others to do the right thing will not work.
 
@@ -136,7 +117,7 @@ Thus, we learn the most important responsibility of Java programmers: We must pr
     When designing a Java class, you must ensure that the data in its instance variables will always be valid.  If you don't work to ensure this, then there will come a point where the data will become invalid.
 \end{tip}
 
-The path to ensuring data validity starts with changing the \textit{visibility} of the instance variables.  We will mark \mintinline{java}{x} and \mintinline{java}{y} as \mintinline{java}{private}, like this:
+The path to ensuring data validity starts with changing the \textit{visibility} of the instance variables.  We will mark \texttt{x} and \texttt{y} as \mintinline{java}{private}, like this:
 
 \begin{minted}{java}
 public class Point {
@@ -145,7 +126,7 @@ public class Point {
 }
 \end{minted}
 
-The value of a \mintinline{java}{private} variable can not be retrieved or changed by any code outside the class.  This protects our data from being made negative by the \mintinline{java}{TestPoint} class:
+The value of a \mintinline{java}{private} variable can not be retrieved or changed by any code outside the class.  This protects our data from being made negative by the \texttt{TestPoint} class:
 
 \begin{minted}{java}
 public class TestPoint {
@@ -172,45 +153,4 @@ public class TestPoint {
 }
 \end{minted}
 
-The instance variables still need to be \mintinline{java}{private}; the way to fix this problem is to give limited \mintinline{java}{public} access to viewing and changing the instance variables' values.
-
-\section{Constructors}
-
-The reason that the code \mintinline{java}{Point p1 = new Point();} looks like a method call is because it \textit{is} a method call.  When we use \mintinline{java}{new} in this way to instantate an object, the Java interpreter calls a method called a \textit{constructor}.
-
-\begin{defn}{Constructor}
-    A \textbf{constructor}\index{Methods!Constructors} is a special method in a class that runs automatically when an instance of that class is created.
-\end{defn}
-
-There are two very important things to know about constructors, that violate previous rules and guidelines about methods in general:
-\bi
-\item The name of the constructor method must be exactly the same as the name of the class.
-\item Constructor methods do not have a return type; not even \mintinline{java}{void}.
-\ei
-
-When you write a class, it is your responsibility to ensure that the data stored in the instance variables are always valid.  This responsibility begins at the moment an object of the class is created.  Therefore, every constructor we write must ensure that every instance variable is initialized with valid data values.
-
-\begin{tip}{Constructors}
-    Make sure that every constructor you ever write initializes all the class' instance variables with valid data values.
-\end{tip}
-
-\subsection{Default Constructors}
-
-There are two basic kinds of constructors.  We will be discussing \textit{parameterized constructors} in Section $X$, but this discussion will focus on \textit{default constructors}.  A \textbf{default constructor}\index{Methods!Constructors!Default constructors} is simply a constructor with an empty parameter list.  When you visit a new pizza place for the first time, and you aren't aware of what exotic toppings or crust styles they may have available, you might choose the default option -- ``I'll take one regular slice, please.''\footnote{This is virually always the right choice where I live; your mileage may vary, especially as you travel farther from New York City.}  When another programmer wants to instantiate your class, but isn't aware of what options exist, he or she will likely choose the default option as well, by calling your default constructor.
-
-And so, when designing a new class, one of your responsibilities is to determine what will serve as good default values for your class.  The pizza chef will probably choose a white flour crust, tomato sauce, and mozzarella cheese.  For the point class, we might choose the one pixel we can guarantee exists -- the top left corner, $(0,0)$.
-
-With all those details in place, we can finally write the \mintinline{java}{Point} class' default constructor:
-
-\begin{minted}{java}
-public class Point {
-    private int x;  // x component of Cartesian ordered pair
-    private int y;  // y component of Cartesian ordered pair
-
-    // Default constructor
-    public Point() {
-        x = 0;
-        y = 0;
-    }
-}
-\end{minted}
+The instance variables still need to be \mintinline{java}{private}; the way to fix this problem is to give limited \mintinline{java}{public} access to viewing and changing the instance variables' values.  We will explore how to grant this access in the next chapter.

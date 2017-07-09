@@ -1,0 +1,49 @@
+% !TEX root = /Users/cmerlo/cs1textbook/cs1textbook.tex
+
+\chapter{Default Constructors}
+\label{chapter:default-constructors}
+
+\minitoc
+
+At the end of Chapter \ref{chapter:classes} we decided that instance variables should be \mintinline{java}{private}, and that we should carefully grant \mintinline{java}{public} access as necessary so that the instance variables can be set to store appropriate values.  In this chapter, we discuss how to store appropriate values at the time an object is created.
+
+\section{Constructors}
+
+The reason that the code \mintinline{java}{Point p1 = new Point();} looks like a method call is because it \textit{is} a method call.  When we use \mintinline{java}{new} in this way to instantate an object, the Java interpreter calls a method called a \textit{constructor}.
+
+\begin{defn}{Constructor}
+    A \textbf{constructor}\index{Methods!Constructors} is a special method in a class that runs automatically when an instance of that class is created.
+\end{defn}
+
+There are two very important things to know about constructors, that violate previous rules and guidelines about methods in general:
+\bi
+\item The name of the constructor method must be exactly the same as the name of the class.
+\item Constructor methods do not have a return type; not even \mintinline{java}{void}.
+\ei
+
+When you write a class, it is your responsibility to ensure that the data stored in the instance variables are always valid.  This responsibility begins at the moment an object of the class is created.  Therefore, every constructor we write must ensure that every instance variable is initialized with valid data values.
+
+\begin{tip}{Constructors}
+    Make sure that every constructor you ever write initializes all the class' instance variables with valid data values.
+\end{tip}
+
+\subsection{Default Constructors}
+
+There are two basic kinds of constructors.  We will be discussing \textit{parameterized constructors} in Section $X$, but this discussion will focus on \textit{default constructors}.  A \textbf{default constructor}\index{Methods!Constructors!Default constructors} is simply a constructor with an empty parameter list.  When you visit a new pizza place for the first time, and you aren't aware of what exotic toppings or crust styles they may have available, you might choose the default option -- ``I'll take one regular slice, please.''\footnote{This is virually always the right choice where I live; your mileage may vary, especially as you travel farther from New York City.}  When another programmer wants to instantiate your class, but isn't aware of what options exist, he or she will likely choose the default option as well, by calling your default constructor.
+
+And so, when designing a new class, one of your responsibilities is to determine what will serve as good default values for your class.  The pizza chef will probably choose a white flour crust, tomato sauce, and mozzarella cheese.  For the point class, we might choose the one pixel we can guarantee exists -- the top left corner, $(0,0)$.
+
+With all those details in place, we can finally write the \texttt{Point} class' default constructor:
+
+\begin{minted}{java}
+public class Point {
+    private int x;  // x component of Cartesian ordered pair
+    private int y;  // y component of Cartesian ordered pair
+
+    // Default constructor
+    public Point() {
+        x = 0;
+        y = 0;
+    }
+}
+\end{minted}

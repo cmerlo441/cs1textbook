@@ -3,7 +3,28 @@
 \chapter{Reference Variables}
 \label{chapter:reference-variables}
 
-In Section \ref{section:string} we learned that a variable of type \texttt{String} must be \textit{instantiated} using code like:
+\minitoc
+
+\section{Built-In Data Types}
+
+The Java language provides a few ways to represent data.  In Chapter \ref{chapter:info-numbers} we learned a couple of the ways Java allows us to store numbers.  Truth values were discussed in Chapter \ref{chapter:if}.  Then, in Chapter \ref{chapter:char}, we learned how to store characters and strings.  But, as they said on Sesame Street, one of these things is not like the others.
+
+\subsection{Primitive Data Types}
+
+In Section \ref{section:string}, it was noted that the data types \texttt{int}, \texttt{double}, \texttt{boolean}, and \texttt{char} are \textbf{primitive data types}\index{Primitive Data Types}, without discussing what that means.  For now, we will define a variable of a primitive data type as one that stores a value directly, but this won't mean much until we explore the other kind of data type.
+
+\subsection{Classes Are Also Data Types}
+We also learned in \ref{section:string} that the \texttt{String} data type is part of the Java language.  \texttt{String} is also the name of a Java class.  A \textbf{class} serves as a data type in Java, and in this chapter we will explore how to create our own data types.
+
+Java programmers use the word \textit{class} to describe a group of objects with similar characterisics or uses; for instance, acoustic 12-string guitars are one class of musical instruments, and wide receivers are one class of football players.  When we define a class, we specify what objects of that class will be like, and we explain what sort of tasks these objects will be able to perform.
+
+\begin{defn}{Class}
+    A \textbf{class}\index{Class!Definition} is a Java data type.  We programmers can create our own data types by defining our own classes.  A typical Java class defines the \textit{properties} and \textit{behaviors} of the variables of this type that will be created.
+\end{defn}
+
+\section{Primitive Variables and Reference Variables}
+
+Before starting to discuss how to create our own Java classes, we should examine what happens in memory when we create variables of those classes.  In Section \ref{section:string} we learned that a variable of type \texttt{String} must be \textit{instantiated} using code like:
 
 \begin{minted}{java}
 String s1 = new String( "Hello world!" );
@@ -52,3 +73,5 @@ The actual string is stored some place in memory away from the variable \texttt{
 \begin{defn}{Reference Variable}
     A \textbf{reference variable}\index{Reference Variable} is a variable that stores a \textit{reference} to, or the memory address of, a piece of data stored somewhere else in memory.
 \end{defn}
+
+Throughout this Part of the book, we will be developing an application as a case study.  Specifically, we will be designing a program that children can use to draw geometric shapes on the screen, and learn about some of these shapes' important characteristics like area, perimeter, volume, etc.
