@@ -1,3 +1,6 @@
+/**
+ * Provides some examples of doing arithmetic in Java.
+ */
 public class Arithmetic {
     public static void main( String args[] ) {
         int i1;

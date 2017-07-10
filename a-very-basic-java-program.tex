@@ -13,7 +13,7 @@ The discussions in this chapter are meant to acquaint you with the layout and st
 We will defer a good working definition of the word \textit{class} as it's used in Java until later.  For now, understand that 99\% of all Java program code exists within the definition of a class.  The basic layout of a class is:
 
 \begin{javaformat}{Basic Class Layout}
-\begin{minted}{java}
+\begin{minted}{text}
 public class <class-name> {
     <declarations>
 
@@ -50,9 +50,12 @@ Also note that this is the textbook's first use of \textit{magic code}.  You are
 
 \begin{magic}{Hello World}
 \begin{minted}{java}
+/**
+ * Provides a warm greeting.
+ */
 public class HelloWorld {
     public static void main( String args[] ) {
-        String message;
+        String message;  // Stores the message to be displayed
 
         message = new String( "Hello world!" );
         System.out.println( message );
