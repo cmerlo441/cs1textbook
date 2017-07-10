@@ -7,7 +7,7 @@
 
 %\section{The \texttt{Point} Class}
 
-We will begin our geometry case study by creating a data type to represent the smallest unit of geometry -- the point -- and build up in complexity from there.  \href{https://en.wiktionary.org/wiki/point}{Wiktionary defines a geometrical point} as ``A zero-dimensional mathematical object representing a location in one or more dimensions; something considered to have position but no magnitude or direction''.  We will define our \mintinline{java}{Point} class to represent an object on a two-dimensional Cartesian plane, since this is a good analogy for a computer screen.  A detail that will become important later is that several computer graphics paradigms, including the one we'll be working under later, fix the origin of the screen's Cartesian plane at the top left of the screen, so that $x$ values increase from right to left and $y$ values increase from the top of the screen to the bottom; this results in all $x$ and $y$ values being non-negative.  A monitor with 1024$\times$768 resolution, therefore, would find the point $(1024,768)$ at the bottom right of the screen, as in Figure \ref{fig:monitor}.
+We will begin our geometry case study by creating a data type to represent the smallest unit of geometry -- the point -- and build up in complexity from there.  \href{https://en.wiktionary.org/wiki/point}{Wiktionary defines a geometrical point} as ``A zero-dimensional mathematical object representing a location in one or more dimensions; something considered to have position but no magnitude or direction''.  We will define our \mintinline{java}{Point} class to represent an object on a two-dimensional Cartesian plane, since this is a good analogy for a computer screen.  A detail that will become important later is that several computer graphics paradigms, including the one we'll be working under, fix the origin of the screen's Cartesian plane at the top left of the screen, so that $x$ values increase from right to left and $y$ values increase from the top of the screen to the bottom; this results in all $x$ and $y$ values being non-negative.  A monitor with 1024$\times$768 resolution, therefore, would find the point $(1023,767)$ at the bottom right of the screen, as in Figure \ref{fig:monitor}.
 
 \begin{figure}[ht]
     \color{nccblue}
@@ -20,7 +20,7 @@ We will begin our geometry case study by creating a data type to represent the s
             \draw (0,4) node [circle,fill=nccblue] {};
 
             \draw (-0.5,3.65) node {$(0,0)$};
-            \draw (6,0.3) node {$(1024,768)$};
+            \draw (6,0.3) node {$(1023,767)$};
         \end{tikzpicture}
     \end{center}
     \caption{Cartesian Coordinates of a Computer Monitor with 1024$\times$768 Resolution}
