@@ -10,3 +10,165 @@ In Chapters \ref{chapter:classes} and \ref{chapter:default-constructors} we deve
 \section{Mutators}
 
 Once an object has been created, the secure way to allow an outside class to change the values stored in the instance variables is to write a \mintinline{java}{public} \textit{mutator} method.
+
+\begin{defn}{Mutator}
+    A \textbf{mutator method}\index{Methods!Mutators} is a method that grants public privileges to change private data.
+\end{defn}
+
+Mutator conventions are very similar to accessor conventions:
+
+\bi
+\item Write one mutator per instance variable (or fewer -- you might not want to grant edit access to every instance variable)
+\item Begin the method's identifier with \texttt{set}
+\item Finish the method's identifier with the name of the instance variable, capitalizing the first letter
+\item The return type of the method should be \mintinline{java}{void}
+\item The method should have one formal parameter, of the same data type as the instance variable whose value is getting changed
+\ei
+
+With that being said, a naive programmer might initially write a mutator like this:
+
+\begin{trap}{Mutator}
+    Don't just store data from the caller without validating it, like this:
+    \begin{minted}{java}
+    public void setX( int newXVal ) {
+        x = newXVal;
+    }
+    \end{minted}
+\end{trap}
+
+The code in that Trap will store any value sent to it from the caller as the $x$ portion of our ordered pair -- even a negative value, which we decided is not valid for the \texttt{Point} class.  We must \textit{validate} any value that comes in from the mutator before using it.  For this class, it means only storing non-negative numbers.  Here's a better mutator:
+
+\begin{minted}{java}
+    /**
+     * Change the value of the x coordinate
+     * @param newXVal  the proposed new x coordinate (must be non-negative)
+     */
+    public void setX( int newXVal ) {
+        if( newXVal >= 0 )
+            x = newXVal;
+    }
+\end{minted}
+
+\begin{tip}{Data Validation}
+    Only you can ensure that your instance variables always contain valid data.  When writing a method like a mutator -- one that changes instance variables based on external values -- always validate those external values.  Never trust the caller to have sent in proper data.
+\end{tip}
+
+\subsection{Testing}
+
+Remember to test your code every time you add a method!
+
+\begin{minted}{java}
+public class TestPoint {
+    public static void main( String args[] ) {
+        Point p1 = new Point();
+
+        // Test the default constructor
+        System.out.println( "p1's x value should be 0 and is " + p1.getX() );
+        System.out.println( "p1's x value should be 0 and is " + p1.getX() );
+
+
+        // Test the mutators with valid requests
+        p1.setX( 5 );
+        System.out.println( "p1's x value should be 5 and is " + p1.getX() );
+        p1.setY( 16 );
+        System.out.println( "p1's y value should be 16 and is " + p1.getX() );
+
+        // Be sure to test edge cases!  0 should be considered valid
+        p1.setX( 0 );
+        System.out.println( "p1's x value should be 0 and is " + p1.getX() );
+        p1.setY( 0 );
+        System.out.println( "p1's y value should be 0 and is " + p1.getY() );
+
+
+        // Test the mutators with invalid requests
+        p1.setX( -1 );
+        System.out.println( "p1's x value should be 0 and is " + p1.getX() );
+        p1.setY( -1 );
+        System.out.println( "p1's x value should be 0 and is " + p1.getX() );
+    }
+}
+\end{minted}
+
+\section{Scope}
+
+This code might not do what you think it does:
+
+\begin{trap}{Scope}
+    The instance variable is named \texttt{x}.  What if the parameter is also named \texttt{x}?
+    \begin{minted}{java}
+    public void setX( int x ) {
+        x = x;
+    }
+    \end{minted}
+\end{trap}
+
+When this method runs, there exist two completely variables called \texttt{x}: the instance variable that's declared near the top of the class definition, and the formal parameter declared in the mutator's header.  While these variables have the same name, they exist in different places in memory, and changes made to one have no effect on the other.
+
+Programmers use the word \textit{scope} to describe the parts of code in which a variable exists or doesn't exist.  A formal parameter has the same scope as a \textit{local variable} declared within the body of a method; both of these are scoped only within the method.  Instance variables, on the other hand, exist in \textit{class scope}; that is, you can type the name of an instance variable anywhere within the definition of a class and refer to that variable -- with one big exception.  A closer, or more local, scope always supercedes a larger scope.
+
+\begin{defn}{Scope}
+    Every variable has a \textbf{scope}\index{Scope}, which is the portion of code in which that variable exists.  As a general rule, the scope of a variable is bounded by the closest set of curly braces.  (The exception to this is formal parameters, which are defined in a method's header, but scoped within the method's body.)  A class, a method, and a compound statement like a conditional or a loop can all serve as a variable's scope.
+\end{defn}
+
+In the case of the preceding code trap, the formal parameter is what's referred to by every occurrence of the mane \texttt{x}.  There are no references to the instance variable.  The assignment statement, then, sets the formal parameter equal to itself.  When this method ends, the instance variable will still have the value it had when the method began.
+
+\subsection{Resolving Scope with \texttt{this}}
+
+The keyword \texttt{this} has a couple of uses in the Java language.  The one that's most relevant here is that it can be used like an object's identifier to mean ``the present instance'', to resolve the scope of an otherwise ambiguous identifer.  For example, in the \texttt{setX} mutator, the identifier \mintinline{java}{this.x} would mean ``the instance variable called x'', whereas \texttt{x} by itself would still mean the formal parameter, which is the variable called \texttt{x} that was declared most locally.  We can therefore use \texttt{this} to fix the bug in the code trap:
+
+\begin{minted}{java}
+    // Alternate definition of setX, using this for scope resolution
+    public void setX( int x ) {
+        this.x = x;
+    }
+\end{minted}
+
+It is the author's opinion that code like this should be avoided, since it's easy to accidentally add ambiguity.  However, the author will conceded that on rare occassions, there really is no better name for a mutator's parameter than the one used already for the instance variable.
+
+\section{Parameterized Constructors}
+
+As our code currently stands, if we want to make a \texttt{Point} to represent the point $(5, 16)$, we have to construct a \texttt{Point} at $(0,0)$ and then call two mutators to change the coordinates.  It would save us some steps if we could customize the object while we instantiate it.  This is why programmers write \textit{parameterized constructors.}
+
+A \textbf{parameterized constructor}\index{Methods!Constructors!Parameterized constructor}, as the name implies, is a constructor that has one or more parameters.  While every class needs to have a default constructor, not every class needs a parameterized one.  You can also provide more than one parameterized constructor in a class, if you find that it's appropriate to do so.  Whether you provide any is your choice, but it can make it easier for programmers to instantiate your class the way they want to.
+
+When writing a parameterized constructor, it is essential to remember these two things that we've learned in recent chapters:
+
+\bi
+\item A constructor must initialize all instance variables with valid data values
+\item A method that changes instance variables based on external values must validate those external values
+\ei
+
+A parameterized constructor must do both of these things.  Our \texttt{Point} class constructor, then, should probably examine each parameter, use it if it's valid, and use the default value instead if it isn't.  Here's a first attempt:
+
+\begin{minted}{java}
+    // A first attempt at a parameterized constructor
+    public Point( int xVal, int yVal ) {
+        if( xVal >= 0 )
+            x = xVal;
+        else
+            x = 0;
+
+        if( yVal >= 0 )
+            y = yVal;
+        else
+            y = 0;
+    }
+\end{minted}
+
+We can make this code a little bit shorter if we set the instance variables to their default values, and then use simple if statements to change the values if appropriate.
+
+\begin{minted}{java}
+    // A second, slightly shorter, version of the parameterized constructor
+    public Point( int xVal, int yVal ) {
+        x = 0;
+        y = 0;
+
+        if( xVal >= 0 )
+            x = xVal;
+
+        if( yVal >= 0 )
+            y = yVal;
+    }
+\end{minted}
+
+% Add DRY section here
