@@ -1,0 +1,12 @@
+% !TEX root = cs1textbook.tex
+
+\chapter{Mutators and Parameterized Constructors}
+\label{chapter:mutators}
+
+\minitoc
+
+In Chapters \ref{chapter:classes} and \ref{chapter:default-constructors} we developed enough of a \texttt{Point} class to be able to instantiate \texttt{Point} objects and see what they store.  But right now, all they can store is $(0,0)$.  In this chapter, we see how to customize the values stored in the object.
+
+\section{Mutators}
+
+Once an object has been created, the secure way to allow an outside class to change the values stored in the instance variables is to write a \mintinline{java}{public} \textit{mutator} method.
