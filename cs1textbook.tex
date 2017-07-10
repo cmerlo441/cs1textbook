@@ -55,7 +55,8 @@
     xleftmargin=1em,
     frame=leftline,
     framesep=1em,
-    rulecolor=\color{nccblue}
+    rulecolor=\color{nccblue},
+    style=colorful
 }
 %
 % \newmintedfile[javafile]{java}{%
@@ -66,7 +67,15 @@
 %     framesep=1em
 % }
 
-\usemintedstyle{colorful}
+\setminted[shell-session]{%
+    xleftmargin=0.25em,
+    frame=leftline,
+    framesep=1em,
+    rulecolor=\color{nccorange},
+    style=vim,
+}
+
+%\usemintedstyle{colorful}
 
 \definecolor{nccblue}{cmyk}{1,0.72,0,0.38}
 \definecolor{nccorange}{cmyk}{0,0.65,100,0.115}

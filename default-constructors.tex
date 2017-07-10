@@ -89,6 +89,31 @@ And \texttt{y}'s accessor should look like this:
     }
 \end{minted}
 
+With that, the \texttt{Point} class now looks like this:
+
+\begin{minted}{java}
+public class Point {
+    private int x;  // x component of Cartesian ordered pair
+    private int y;  // y component of Cartesian ordered pair
+
+    // Default constructor
+    public Point() {
+        x = 0;
+        y = 0;
+    }
+
+    // Accessor method for x
+    public int getX() {
+        return x;
+    }
+
+    // Accessor method for y
+    public int getY() {
+        return y;
+    }
+}
+\end{minted}
+
 \section{Testing}
 
 Now that the accessor methods exist for the \texttt{Point} class, we can use them to test the default constructor.  In general, you should test your code frequently -- every time you add or edit a new method, you should run it a few times, and run all the other code that depends on this new code, to make sure all the interactions are working the way you want.  One minor change can have unintended consequences in some other part of your code, but if you test frequently, you can greatly reduce the amount of code you have to search through to find your bug.
@@ -102,8 +127,17 @@ Now we can write an application like this to make sure that our default construc
 \begin{minted}{java}
 public class TestPoint {
     Point p1 = new Point();  // we assume this Point contains (0,0)
-    
+
     System.out.println( "p1's x value is " + p1.getX() );
     System.out.println( "p1's y value is " + p1.getY() );
 }
+\end{minted}
+
+When we compile and run these two classes together, we get the output we expect, confirming that the default constructor does what we want it to.
+
+\begin{minted}{shell-session}
+$ javac Point.java TestPoint.java
+$ java TestPoint
+p1's x value is 0
+p1's y value is 0
 \end{minted}
