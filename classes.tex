@@ -52,9 +52,16 @@ Section \ref{sec:using-memory} also lists some guidelines regarding naming a var
 \item Classes define \textit{things}, so the name should be a \textit{noun}.
 \ei
 
+Finally, each class should have a JavaDoc comment above the header that explains what this class provides to the programmer.
+
 For the \texttt{Point} class, the header will look like the first line of this code:
 
 \begin{minted}{java}
+/**
+ * Provides a two-dimensional point on a Cartesian plane.
+ * <p>
+ * All x and y values are non-negative.
+ */
 public class Point {  // This line is the header
     /* The body of the class will go here */
 }

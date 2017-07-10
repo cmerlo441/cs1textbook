@@ -37,10 +37,13 @@ With all those details in place, we can finally write the \texttt{Point} class' 
 
 \begin{minted}{java}
 public class Point {
-    private int x;  // x component of Cartesian ordered pair
-    private int y;  // y component of Cartesian ordered pair
+    /* ... */
 
-    // Default constructor
+    /**
+     * Default constructor
+     * <p>
+     * Creates Point that represents (0,0)
+     */
     public Point() {
         x = 0;
         y = 0;
@@ -74,7 +77,10 @@ The generally accepted conventions for accessor methods are as follows:
 Following these conventions, the accessor method for the \texttt{x} instance variable should look like this:
 
 \begin{minted}{java}
-    // Accessor method for x
+    /**
+     * Returns x value of ordered pair
+     * @return Point's x value
+     */
     public int getX() {
         return x;
     }
@@ -83,7 +89,10 @@ Following these conventions, the accessor method for the \texttt{x} instance var
 And \texttt{y}'s accessor should look like this:
 
 \begin{minted}{java}
-    // Accessor method for y
+/**
+ * Returns y value of ordered pair
+ * @return Point's y value
+ */
     public int getY() {
         return y;
     }
@@ -92,22 +101,37 @@ And \texttt{y}'s accessor should look like this:
 With that, the \texttt{Point} class now looks like this:
 
 \begin{minted}{java}
-public class Point {
+/**
+ * Provides a two-dimensional point on a Cartesian plane.
+ * <p>
+ * All x and y values are non-negative.
+ */
+ public class Point {
     private int x;  // x component of Cartesian ordered pair
     private int y;  // y component of Cartesian ordered pair
 
-    // Default constructor
+    /**
+     * Default constructor
+     * <p>
+     * Creates Point that represents (0,0)
+     */
     public Point() {
         x = 0;
         y = 0;
     }
 
-    // Accessor method for x
+    /**
+     * Returns x value of ordered pair
+     * @return Point's x value
+     */
     public int getX() {
         return x;
     }
 
-    // Accessor method for y
+    /**
+     * Returns y value of ordered pair
+     * @return Point's y value
+     */
     public int getY() {
         return y;
     }
