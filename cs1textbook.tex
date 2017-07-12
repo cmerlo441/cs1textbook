@@ -47,7 +47,7 @@
 \usepackage[newfloat]{minted}
 %\captionsetup[listing]{position=top}
 %\usepackage{imakeidx}
-\tcbuselibrary{listings,minted}
+\tcbuselibrary{listings,minted,xparse}
 
 \setminted[java]{%
     linenos,
@@ -266,6 +266,8 @@
 \parskip = \baselineskip
 \setlist[itemize]{itemsep=0.25em, topsep=0pt}
 
+\tcbstartrecording
+
 \setcounter{chapter}{-1}
 \input{about-this-textbook}
 
@@ -296,6 +298,9 @@
 \input{appendix-compiling}
 \input{appendix-numbers}
 \input{appendix-ascii}
+
+\tcbstoprecording
+\tcbinputrecords
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
