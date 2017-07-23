@@ -161,9 +161,11 @@ We can make this code a little bit shorter if we set the instance variables to t
 \begin{minted}{java}
     // A second, slightly shorter, version of the parameterized constructor
     public Point( int xVal, int yVal ) {
+        // Set instance variables to default values
         x = 0;
         y = 0;
 
+        // Use parameters if their values are valid
         if( xVal >= 0 )
             x = xVal;
 
@@ -172,4 +174,36 @@ We can make this code a little bit shorter if we set the instance variables to t
     }
 \end{minted}
 
-% Add DRY section here
+\subsection{Avoid Repeated Work}
+
+The code above does what we want it to.  It allows the caller to decide on a point's values at the time the object is created, and it validates those values, making sure that only valid values are stored in the object.
+
+However, just because the code \textit{works}, doesn't mean it's \textit{right}.
+
+All of the logic in that constructor exists in another part of the code, also -- the default values are set in the default constructor, and the validation occurs in the mutators.  It's easy to see that re-typing the same code could lead to a typo - for instance, pressing the 9 key instead of the 0 key when entering the default value for $y$.  But there also exist more compelling reasons to avoid repeated code.  What would happen if we decided to change the default values?  We would now have to make that change in two different parts of the code.  What would happen if we changed the specification so that $x$ and $y$ could only be even numbers?  We would also need to make these changes in multiple places.  Further, time is a non-renewable resource, and we shouldn't spend it re-solving solved problems.
+
+All this leads to the old adage ``DRY'' -- \textbf{don't repeat yourself}.
+
+\begin{tip}{Don't Repeat Yourself}
+    Repeating code wastes your time, can lead to copy-and-paste errors, and can cause logical decisions to be handled in different ways when code changes aren't correctly propagated.  Solve each problem once, and reuse that code when needed.
+\end{tip}
+
+Since all the logic in the parameterized constructor above exists in other places, the best solution is to call it when needed.
+
+\subsection{Another Use of \texttt{this}}
+
+The right way to set the instance variables to their default values from within the parameterized constructor is to use the default constructor.  We can call one constructor from another by using the keyword \mintinline{java}{this}\index{this@\mintinline{java}{this}} with parentheses, so that it looks like a method call.  When using \mintinline{java}{this} in this way, it must be the first statement in the constructor.
+
+The next iteration of the parameterized constructor reuses the code from the default constructor and the mutators to get the same job done, while ensuring that the logic for each decision only exists in one place:
+
+\begin{minted}{java}
+    // A parameterized constructor free of repeated logic
+    public Point( int xVal, int yVal ) {
+        // Set instance variables to default values
+        this();
+
+        // Use parameters if their values are valid
+        setX( xVal );
+        setY( yVal );
+    }
+\end{minted}
