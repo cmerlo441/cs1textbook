@@ -29,7 +29,7 @@ When you write a class, it is your responsibility to ensure that the data stored
 
 \subsection{Default Constructors}
 
-There are two basic kinds of constructors.  We will be discussing \textit{parameterized constructors} in Section $X$, but this discussion will focus on \textit{default constructors}.  A \textbf{default constructor}\index{Methods!Constructors!Default constructors} is simply a constructor with an empty parameter list.  When you visit a new pizza place for the first time, and you aren't aware of what exotic toppings or crust styles they may have available, you might choose the default option -- ``I'll take one regular slice, please.''\footnote{This is virually always the right choice where I live; your mileage may vary, especially as you travel farther from New York City.}  When another programmer wants to instantiate your class, but isn't aware of what options exist, he or she will likely choose the default option as well, by calling your default constructor.
+There are two basic kinds of constructors.  We will be discussing \textit{parameterized constructors} in Section \ref{section:parameterized-constructors}, but this discussion will focus on \textit{default constructors}.  A \textbf{default constructor}\index{Methods!Constructors!Default constructors} is simply a constructor with an empty parameter list.  When you visit a new pizza place for the first time, and you aren't aware of what exotic toppings or crust styles they may have available, you might choose the default option -- ``I'll take one regular slice, please.''\footnote{This is virually always the right choice where I live; your mileage may vary, especially as you travel farther from New York City.}  When another programmer wants to instantiate your class, but isn't aware of what options exist, he or she will likely choose the default option as well, by calling your default constructor.
 
 And so, when designing a new class, one of your responsibilities is to determine what will serve as good default values for your class.  The pizza chef will probably choose a white flour crust, tomato sauce, and mozzarella cheese.  For the point class, we might choose the one pixel we can guarantee exists -- the top left corner, $(0,0)$.
 
@@ -113,7 +113,7 @@ With that, the \texttt{Point} class now looks like this:
     /**
      * Default constructor
      * <p>
-     * Creates Point that represents (0,0)
+     * Creates a Point that represents (0,0)
      */
     public Point() {
         x = 0;

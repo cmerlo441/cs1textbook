@@ -123,13 +123,14 @@ The keyword \texttt{this} has a couple of uses in the Java language.  The one th
     }
 \end{minted}
 
-It is the author's opinion that code like this should be avoided, since it's easy to accidentally add ambiguity.  However, the author will conceded that on rare occassions, there really is no better name for a mutator's parameter than the one used already for the instance variable.
+It is the author's opinion that code like this should be avoided, since it's easy to accidentally add ambiguity.  However, the author will concede that on rare occassions, there really is no better name for a mutator's parameter than the one used already for the instance variable.
 
 \section{Parameterized Constructors}
+\label{section:parameterized-constructors}
 
 As our code currently stands, if we want to make a \texttt{Point} to represent the point $(5, 16)$, we have to construct a \texttt{Point} at $(0,0)$ and then call two mutators to change the coordinates.  It would save us some steps if we could customize the object while we instantiate it.  This is why programmers write \textit{parameterized constructors.}
 
-A \textbf{parameterized constructor}\index{Methods!Constructors!Parameterized constructor}, as the name implies, is a constructor that has one or more parameters.  While every class needs to have a default constructor, not every class needs a parameterized one.  You can also provide more than one parameterized constructor in a class, if you find that it's appropriate to do so.  Whether you provide any is your choice, but it can make it easier for programmers to instantiate your class the way they want to.
+A \textbf{parameterized constructor}\index{Methods!Constructors!Parameterized constructor}, as the name implies, is a constructor that has one or more parameters.  While every class needs to have a default constructor, not every class needs a parameterized one.  Or, if you find that it's appropriate to do so, you can provide more than one parameterized constructor in a class.  Whether you provide any is your choice, but parameterized constructors can make it easier for programmers to instantiate your class the way they want to.
 
 When writing a parameterized constructor, it is essential to remember these two things that we've learned in recent chapters:
 
