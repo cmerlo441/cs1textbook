@@ -102,7 +102,7 @@ This code might not do what you think it does:
     \end{minted}
 \end{trap}
 
-When this method runs, there exist two completely variables called \texttt{x}: the instance variable that's declared near the top of the class definition, and the formal parameter declared in the mutator's header.  While these variables have the same name, they exist in different places in memory, and changes made to one have no effect on the other.
+When this method runs, there exist two completely different variables called \texttt{x}: the instance variable that's declared near the top of the class definition, and the formal parameter declared in the mutator's header.  While these variables have the same name, they exist in different places in memory, and changes made to one have no effect on the other.
 
 Programmers use the word \textit{scope} to describe the parts of code in which a variable exists or doesn't exist.  A formal parameter has the same scope as a \textit{local variable} declared within the body of a method; both of these are scoped only within the method.  Instance variables, on the other hand, exist in \textit{class scope}; that is, you can type the name of an instance variable anywhere within the definition of a class and refer to that variable -- with one big exception.  A closer, or more local, scope always supercedes a larger scope.
 
@@ -114,7 +114,7 @@ In the case of the preceding code trap, the formal parameter is what's referred 
 
 \subsection{Resolving Scope with \texttt{this}}
 
-The keyword \texttt{this} has a couple of uses in the Java language.  The one that's most relevant here is that it can be used like an object's identifier to mean ``the present instance'', to resolve the scope of an otherwise ambiguous identifer.  For example, in the \texttt{setX} mutator, the identifier \mintinline{java}{this.x} would mean ``the instance variable called x'', whereas \texttt{x} by itself would still mean the formal parameter, which is the variable called \texttt{x} that was declared most locally.  We can therefore use \texttt{this} to fix the bug in the code trap:
+The keyword \texttt{this}\index{this()@\mintinline{java}{this}} has a couple of uses in the Java language.  The one that's most relevant here is that it can be used like an object's identifier to mean ``the present instance'', to resolve the scope of an otherwise ambiguous identifer.  For example, in the \texttt{setX} mutator, the identifier \mintinline{java}{this.x} would mean ``the instance variable called x'', whereas \texttt{x} by itself would still mean the formal parameter, which is the variable called \texttt{x} that was declared most locally.  We can therefore use \texttt{this} to fix the bug in the code trap:
 
 \begin{minted}{java}
     // Alternate definition of setX, using this for scope resolution
@@ -190,9 +190,9 @@ All this leads to the old adage ``DRY'' -- \textbf{don't repeat yourself}.
 
 Since all the logic in the parameterized constructor above exists in other places, the best solution is to call it when needed.
 
-\subsection{Another Use of \texttt{this}}
+\subsection{Calling Constructors with \texttt{this()}}
 
-The right way to set the instance variables to their default values from within the parameterized constructor is to use the default constructor.  We can call one constructor from another by using the keyword \mintinline{java}{this}\index{this@\mintinline{java}{this}} with parentheses, so that it looks like a method call.  When using \mintinline{java}{this} in this way, it must be the first statement in the constructor.
+The right way to set the instance variables to their default values from within the parameterized constructor is to use the default constructor.  We can call one constructor from another by using the keyword \mintinline{java}{this} with parentheses, so that it looks like a method call: \mintinline{java}{this();}\index{this()@\mintinline{java}{this()}}.  When using \mintinline{java}{this()} in this way, it must be the first statement in the constructor.
 
 The next iteration of the parameterized constructor reuses the code from the default constructor and the mutators to get the same job done, while ensuring that the logic for each decision only exists in one place:
 
@@ -207,3 +207,12 @@ The next iteration of the parameterized constructor reuses the code from the def
         setY( yVal );
     }
 \end{minted}
+
+To review:
+\bi
+\item Default values for instance variables are defined in the default constructor
+\item The logic concerning acceptable changes to instance variables is defined in the accessors
+\item Any other code that assigns default values, or changes values, should use those methods
+\ei
+
+This will ensure that decisions about your instance variables are only made in one place.
